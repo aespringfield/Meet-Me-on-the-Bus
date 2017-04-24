@@ -18,7 +18,7 @@ module.exports = function(grunt){
         expand: true,
         cwd: 'client/scripts',
         src: ['*.js',
-              '**.*.js'],
+              '**/*.js'],
         dest: 'server/public/scripts/'
       },
       bootstrap: {
@@ -47,7 +47,8 @@ module.exports = function(grunt){
     },
     watch: {
       files: [
-        'client/**/*.*'
+        'client/**/*.*',
+        'client/**/**/*.*'
       ],
       tasks: ['copy']
     }
