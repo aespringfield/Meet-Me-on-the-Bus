@@ -24,8 +24,9 @@ module.exports = function(grunt){
       bootstrap: {
         expand: true,
         cwd: 'node_modules/bootstrap/dist/',
-        src: ['css/bootstrap.css',
-              'js/bootstrap.js'],
+        src: ['css/bootstrap.min.css',
+              'css/bootstrap.min.css.map',
+              'js/bootstrap.min.js'],
         dest: 'server/public/vendors/bootstrap/'
       },
       angular: {
@@ -43,6 +44,20 @@ module.exports = function(grunt){
               'angular-route.min.js',
               'angular-route.min.js.map'],
         dest: 'server/public/vendors/angular-route/'
+      },
+      angularMoment: {
+        expand: true,
+        cwd: 'node_modules/angular-moment',
+        src: ['angular-moment.js',
+              'angular-moment.min.js',
+              'angular-moment.min.js.map'],
+        dest: 'server/public/vendors/angular-moment/'
+      },
+      moment: {
+        expand: true,
+        cwd: 'node_modules/moment',
+        src: ['moment.js'],
+        dest: 'server/public/vendors/moment/'
       }
     },
     watch: {

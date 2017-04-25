@@ -1,0 +1,14 @@
+<div class="container">
+  <div ng-include="'views/partials/nav.html'"></div>
+  <form class="destination">
+    <label for="destination">Where are you going?</label>
+    <input type="text" id="destination" name="" value="" placeholder="Destination">
+    <label for="arrive-time"></label>
+    <select id="arrive-time">
+      <option value=""></option>
+    </select>
+  </form>
+  {{destination.now}}
+  <button ng-click="destination.setDate()">Set date</button>
+  <button class="btn btn-default" ng-click="destination.logout()">Log Out</button>
+</div>

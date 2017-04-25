@@ -6,7 +6,7 @@ var path = require('path');
 
 // Handles request for HTML file
 router.get('/', function(req, res, next) {
-    res.sendFile(path.resolve(__dirname, '../public/views/register.html'));
+    res.sendFile(path.resolve(__dirname, '../public/views/templates/register.html'));
 });
 
 // Handles POST request with new user data

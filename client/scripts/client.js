@@ -1,19 +1,20 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'angularMoment']);
 
 // Routes
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/home', {
-      templateUrl: '/views/home.html',
+      templateUrl: '/views/templates/home.html',
       controller: 'LoginController',
     })
     .when('/registration', {
-      templateUrl: '/views/registration.html',
+      templateUrl: '/views/templates/registration.html',
       controller: 'LoginController',
     })
-    .when('/destination', {
-      templateUrl: '/views/destination.html',
-      controller: 'TripController',
+    .when('/user', {
+      templateUrl: '/views/templates/destination.html',
+      controller: 'DestinationController',
+      controllerAs: 'destination',
       resolve: {
         getuser : function(UserService) {
           return UserService.getuser();

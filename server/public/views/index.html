@@ -2,24 +2,26 @@
 <html ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Meet Me on the Bus</title>
 
   <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css" />
   <link rel="stylesheet" href="styles/style.css" />
 
   <script type="text/javascript" src="vendors/angular/angular.min.js"></script>
   <script type="text/javascript" src="vendors/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="vendors/moment/moment.js"></script>
+  <script type="text/javascript" src="vendors/angular-moment/angular-moment.min.js"></script>
   <script type="text/javascript" src="scripts/client.js"></script>
-    <script type="text/javascript" src="scripts/factories/UserService.js"></script>
+  <script type="text/javascript" src="scripts/factories/UserService.js"></script>
   <script type="text/javascript" src="scripts/controllers/loginController.js"></script>
   <script type="text/javascript" src="scripts/controllers/userController.js"></script>
+  <script type="text/javascript" src="scripts/controllers/destinationController.js"></script>
 
 
 
 </head>
 <body>
-  <div class="container">
-
+  <div class="container" ng-view>
   </div>
 </body>
 </html>
