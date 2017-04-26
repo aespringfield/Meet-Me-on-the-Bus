@@ -1,10 +1,26 @@
 <div class="container">
-  <form class="destination">
-    <label for="destination">Where are you going?</label>
-    <input type="text" id="destination" name="" value="" placeholder="Destination">
-    <label for="arrive-time"></label>
-    <select id="arrive-time">
-      <option value=""></option>
-    </select>
+  <form class="destinationForm" ng-model="destination.frog" ng-submit="destination.log(destination.dateInput)">
+    <md-input-container>
+      <label for="destinationInput">Where are you going?</label>
+      <input type="text" id="destinationInput" name="" value="" placeholder="Destination">
+    </md-input-container>
+
+    {{destination.moment(destination.dateInput).valueOf()}}
+    {{destination.moment(destination.moment(destination.dateInput).valueOf())}}
+    <md-input-container>
+      <mdp-time-picker ng-model="destination.dateInput"></mdp-time-picker>
+    </md-input-container>
+    <md-content layout-padding ng-cloak>
+      <div layout-gt-xs="row">
+        <div flex-gt-xs>
+          <mdp-date-picker ng-model="destination.dateInput" ng-change="destination.log(destination.dateInput)" md-placeholder="Enter date"></mdp-date-picker>
+        </div>
+      </div>
+    </md-content>
+    <md-input-container>
+        {{destination.moment(destination.dateInput).valueOf()}}
+        {{destination.moment(destination.moment(destination.dateInput).valueOf())}}
+    </md-input-container>
+    <input type="submit" value="Submit"></input>
   </form>
 </div>
