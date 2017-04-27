@@ -58,6 +58,49 @@ module.exports = function(grunt){
         cwd: 'node_modules/moment',
         src: ['moment.js'],
         dest: 'server/public/vendors/moment/'
+      },
+      angularMaterial: {
+        expand: true,
+        cwd: 'node_modules/angular-material',
+        src: ['angular-material.js',
+              'angular-material.css',
+              'layouts/angular-material.layouts.css',
+              'layouts/angular-material.layout-attributes.css',
+              'modules/js/datepicker/datepicker.js',
+              'modules/js/datepicker/datepicker.css'],
+        dest: 'server/public/vendors/angular-material/'
+      },
+      angularMessages: {
+        expand: true,
+        cwd: 'node_modules/angular-messages',
+        src: ['angular-messages.js'],
+        dest: 'server/public/vendors/angular-messages/'
+      },
+      angularAria: {
+        expand: true,
+        cwd: 'node_modules/angular-aria',
+        src: ['angular-aria.js'],
+        dest: 'server/public/vendors/angular-aria/'
+      },
+      angularAnimate: {
+        expand: true,
+        cwd: 'node_modules/angular-animate',
+        src: ['angular-animate.js'],
+        dest: 'server/public/vendors/angular-animate/'
+      },
+      angularDatePicker: {
+        expand: true,
+        cwd: 'node_modules/angular-date-picker',
+        src: ['angular-date-picker.js',
+              'angular-date-picker.css'],
+        dest: 'server/public/vendors/angular-date-picker/'
+      },
+      mdPickers: {
+        expand: true,
+        cwd: 'node_modules/mdPickers/dist',
+        src: ['mdPickers.css',
+              'mdPickers.js'],
+        dest: 'server/public/vendors/mdPickers/'
       }
     },
     watch: {
