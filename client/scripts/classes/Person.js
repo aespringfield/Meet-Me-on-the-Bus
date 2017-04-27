@@ -1,30 +1,67 @@
-// class Person
+// superclass for storing/fetching data about a person
+// firstName, lastName, and email are all strings
+class Person {
 
-  // constructor (firstName, lastName, email)
+  constructor(firstName, lastName, email) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+  }
 
-  // setKey(keyName, keyValue)
+  // general method for editing a property of a person (firstName, lastName, or email)
+  // first parameter is key to access property (e.g. "lastName")
+  // second parameter is value you wish to set property to (e.g. "Springfield")
+  setProperty(key, value) {
+    this[key] = value;
+    return this[key];
+  }
 
-  // getFirstName()
+  getFirstName() {
+    return this.firstName;
+  }
 
-  // getEmail()
+  getEmail() {
+    return this.email;
+  }
 
-  // getInitials()
+  // private method for taking an initial from a name and making sure it's uppercase
+  _getInitial(name) {
+    return name[0].toUpperCase();
+  }
 
-  // getNameShort()
+  // returns initials of person as string (e.g. "AS") for use in certain views
+  getInitials() {
+    let initials = this._getInitial(this.firstName) +  this._getInitial(this.lastName);
+    return initials;
+  }
 
-// class MainUser extends class Person  - change to extension of SubUser in Phase 3?
+  // returns string with shortened version of full name (e.g. "Anna S.")
+  getShortName() {
+    let shortName = this.firstName + ' ' + this._getInitial(this.lastName);
+    return shortName;
+  }
+}
 
-  // constructor (firstName, lastName, email)
+// subclass of person, stores things the user has control over
+// add authentication stuff?
+// change to extension of SubUser in Phase 3?
+class MainUser extends Person  {
+  constructor(firstName, lastName, email) {
+    super(firstName, lastName, email);
+      // this.friendsManager = new FriendsManager;
+      this.tripsArray = [];
+      this.currentTrip = new Trip;
+  }
 
-     // super(firstName, lastName, email)
-
-     // friendsManager : new FriendsManager
-
-     // tripsArray
-
-     // currentTrip
-
-     // authenticatey thing?
+  // saves a currentTrip to the tripsArray
+  // (tripsArray will eventually be stored on database--currentTrip will not)
+  // clears old currentTrip and instantiantes new, empty Trip object
+  storeTrip() {
+    this.tripsArray.push(this.currentTrip);
+    this.currentTrip = new Trip;
+    return this.tripsArray;
+  }
+}
 
 // class SubUser extends class Person (instantiated when non-main user logs in to respond?)
 

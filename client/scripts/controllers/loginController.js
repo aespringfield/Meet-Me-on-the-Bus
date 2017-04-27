@@ -22,7 +22,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
           }
         });
       }
-    }
+    };
 
     $scope.registerUser = function() {
       if($scope.user.username == '' || $scope.user.password == '') {
@@ -35,8 +35,10 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
         },
         function(response) {
           console.log('error');
-          $scope.message = "Please try again."
+          $scope.message = "Please try again.";
         });
       }
-    }
+    };
+
+
 }]);
