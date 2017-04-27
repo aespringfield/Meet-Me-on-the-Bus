@@ -1,4 +1,4 @@
-myApp.controller('DestinationController', ['$scope', 'UserService', 'moment', function ($scope, UserService, moment) {
+myApp.controller('DestinationController', ['$scope', 'UserService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($scope, UserService, moment, $mdpDatePicker, mdpTimePicker) {
   let destination = this;
   destination.date = moment();
   destination.moment = moment;
