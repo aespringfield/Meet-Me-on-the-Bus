@@ -12,6 +12,9 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 
+// Modules
+var searchAddress = require('./modules/googleMapsAPI');
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
