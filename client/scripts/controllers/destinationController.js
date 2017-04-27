@@ -3,17 +3,7 @@ myApp.controller('DestinationController', ['$scope', 'UserService', 'moment', fu
   destination.date = moment();
   destination.moment = moment;
   console.log(destination.date);
-  function createTimeArray(moment) {
-    let timeArray = [];
-    let currentMoment = moment;
-    while (timeArray.length < 48) {
-      let time = convertToTime(currentMoment);
-      timeArray.push(time);
-      currentMoment = currentMoment.add(30, 'minutes');
-    }
-    return timeArray;
-  }
-  console.log(createTimeArray(destination.date));
+
   function convertToTime(date) {
     return moment(date).format('LT');
   }
@@ -29,13 +19,15 @@ myApp.controller('DestinationController', ['$scope', 'UserService', 'moment', fu
     console.log(moment(thing).valueOf());
   }
 
-  $scope.currentDate = new Date();
-destination.showTimePicker = function(ev) {
-  $mdpTimePicker($scope.currentTime, {
-    targetEvent: ev
-  }).then(function(selectedDate) {
-    $scope.currentTime = selectedDate;
-  });;
-}
+
+  // destination.currentDate = new Date();
+// destination.showTimePicker = function(ev) {
+//   $mdpTimePicker(destination.currentTime, {
+//     targetEvent: ev
+//   }).then(function(selectedDate) {
+//     destination.currentTime = selectedDate;
+//   });
+
+
 
 }]);
