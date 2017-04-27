@@ -1,12 +1,16 @@
-// class PeopleManager
+class PeopleManager {
 
-  // constructor (peopleArray = [])
+  constructor (peopleArray = []) {
+    this.peopleArray = peopleArray;
+  }
 
   // findPerson(keyName, keyValue)
 
   // add(person)
 
   // remove(person)
+
+}
 
 // class FriendsManager extends PeopleManager
 
@@ -20,12 +24,15 @@
 
   // update(person, keyName, keyValue) calls person.setKey(keyName, keyValue) and then makes UPDATE request to DB
 
-// class GroupManager extends PeopleManager
+class GroupManager extends PeopleManager {
 
-  // constructor ()
+  constructor (peopleArray = []) {
+    super(peopleArray);
+  }
 
   // invite(person) constructs new InvitedPerson object from person object and pushes to this.peopleArray
 
   // getPeopleByResponded() returns an object containing two arrays:
     // respondeeArray : array of people from peopleArray who have responded
     // nonRespondeeArray : array of people from peopleArray who have not responded
+}

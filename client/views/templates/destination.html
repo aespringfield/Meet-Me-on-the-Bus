@@ -1,10 +1,10 @@
 <div class="container">
-  <form class="destinationForm" ng-submit="destination.log(destination.dateInput)">
+  <form class="destinationForm" ng-submit="destination.set(address)">
     <div layout="row">
       <div class="center">
       <md-input-container>
         <label for="destinationInput">Where are you going?</label>
-        <input type="text" id="destinationInput" name="" value="" placeholder="Destination">
+        <input type="text" id="destinationInput" ng-model="destination.address" name="" value="" placeholder="Destination">
       </md-input-container>
     </div>
     </div>
@@ -13,7 +13,7 @@
       <div layout="column">
         <div flex class="center">
           <md-content>
-              <mdp-time-picker ng-model="destination.dateInput"></mdp-time-picker>
+              <mdp-time-picker ng-model="destination.date"></mdp-time-picker>
             </md-content>
         </div>
       </div>

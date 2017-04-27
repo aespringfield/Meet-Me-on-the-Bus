@@ -1,6 +1,8 @@
 var express = require('express');
 var GoogleMapsAPI = require('googlemaps');
 
+console.log('google maps api hooked in');
+
 var config = {
   key: 'AIzaSyC1z0jkEeeLyD8_ly3-X78LNSrfffXvaf0',
   encode_polylines: false,
@@ -27,8 +29,6 @@ function searchAddress(address) {
     console.log(result);
   });
 }
-
-
 
 // var googleMapsAPI = new GoogleMapsAPI();
 

@@ -50,7 +50,7 @@ class MainUser extends Person  {
     super(firstName, lastName, email);
       // this.friendsManager = new FriendsManager;
       this.tripsArray = [];
-      this.currentTrip = new Trip;
+      this.currentTrip = new Trip();
   }
 
   // saves a currentTrip to the tripsArray
@@ -58,7 +58,7 @@ class MainUser extends Person  {
   // clears old currentTrip and instantiantes new, empty Trip object
   storeTrip() {
     this.tripsArray.push(this.currentTrip);
-    this.currentTrip = new Trip;
+    this.currentTrip = new Trip();
     return this.tripsArray;
   }
 }
