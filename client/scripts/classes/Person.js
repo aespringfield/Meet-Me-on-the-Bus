@@ -45,7 +45,7 @@ class Person {
 // subclass of person, stores things the user has control over
 // add authentication stuff?
 // change to extension of SubUser in Phase 3?
-class MainUser extends class Person  {
+class MainUser extends Person  {
   constructor(firstName, lastName, email) {
     super(firstName, lastName, email);
       // this.friendsManager = new FriendsManager;
