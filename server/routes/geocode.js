@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var searchAddress = require('../modules/googleMapsAPI');
+var GoogleMapsAPI = require('googlemaps');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
@@ -19,12 +20,27 @@ router.get('/', function(req, res) {
   }
 });
 
-router.get('/:address', function(req, res) {
+var config = {
+  key: 'AIzaSyC1z0jkEeeLyD8_ly3-X78LNSrfffXvaf0',
+  encode_polylines: false,
+  secure: true
+};
+
+var googleMapsAPI = new GoogleMapsAPI(config);
+
+router.post('/search', function(req, res) {
   console.log(req.body);
   console.log(req.body.address);
   var address = req.body.address;
-  var result = searchAddress(address);
-  res.send(result);
+  var geocodeParams = {
+    'address': address,
+    'language': 'en',
+    'region': 'us'
+  };
+  googleMapsAPI.geocode(geocodeParams, function(err, result) {
+    console.log(result);
+    res.send(result);
+  });
 });
 
 module.exports = router;

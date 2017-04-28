@@ -7,9 +7,13 @@ class Trip {
     this.groupManager = new GroupManager();
   }
 
-  setDestination(address) {
-    let geocodeResults = Utilities.geocode(address);
-    this.destination = geocodeResults;
+  // setDestination(address) {
+  //   let geocodeResults = Utilities.geocode(address);
+  //   this.destination = geocodeResults;
+  //   return this.destination;
+  // }
+  setDestination(destination) {
+    this.destination = destination;
     return this.destination;
   }
 

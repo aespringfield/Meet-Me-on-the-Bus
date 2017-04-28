@@ -18,7 +18,7 @@ var geocodeParams = {
 };
 
 // make request to Google Maps API for address string
-function searchAddress(address) {
+function searchAddress(address, callback) {
   var geocodeParams = {
     'address': address,
     'language': 'en',
@@ -27,6 +27,7 @@ function searchAddress(address) {
 
   googleMapsAPI.geocode(geocodeParams, function(err, result) {
     console.log(result);
+    return callback(result)
   });
 }
 
