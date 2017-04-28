@@ -3,4 +3,4 @@ node_modules/
 .idea/
 *.log
 server/public/
-client/scripts/data/apiKey.js
+server/modules/apiKey.js
