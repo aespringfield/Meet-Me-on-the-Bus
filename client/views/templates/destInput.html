@@ -1,10 +1,10 @@
 <div class="container">
-  <form class="destinationForm" ng-submit="destination.set(destination.address)">
+  <form class="destinationForm" ng-submit="destInput.setTripInfo(destInput.searchForm.address, destInput.searchForm.date)">
     <div layout="row">
       <div class="center">
       <md-input-container>
         <label for="destinationInput">Where are you going?</label>
-        <input type="text" id="destinationInput" ng-model="destination.address" name="" value="" placeholder="Destination">
+        <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Destination">
       </md-input-container>
     </div>
     </div>
@@ -13,14 +13,14 @@
       <div layout="column">
         <div flex class="center">
           <md-content>
-              <mdp-time-picker ng-model="destination.date"></mdp-time-picker>
+              <mdp-time-picker ng-model="destInput.searchForm.date"></mdp-time-picker>
             </md-content>
         </div>
       </div>
       <div flex>
         <md-content>
           <div>
-            <mdp-date-picker ng-model="destination.dateInput" ng-change="destination.log(destination.dateInput)" md-placeholder="Enter date"></mdp-date-picker>
+            <mdp-date-picker ng-model="destInput.searchForm.date" ng-change="destInput.log(destInput.date)" md-placeholder="Enter date"></mdp-date-picker>
           </div>
         </md-content>
       </div>

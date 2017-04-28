@@ -12,9 +12,9 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'LoginController',
     })
     .when('/user', {
-      templateUrl: '/views/templates/destination.html',
-      controller: 'DestinationController',
-      controllerAs: 'destination',
+      templateUrl: '/views/templates/destInput.html',
+      controller: 'DestInputController',
+      controllerAs: 'destInput',
       resolve: {
         getuser : function(UserService) {
           return UserService.getuser();

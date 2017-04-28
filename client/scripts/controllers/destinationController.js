@@ -1,26 +1,35 @@
-myApp.controller('DestinationController', ['$http', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
-  let destination = this;
+myApp.controller('DestInputController', ['$http', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
+  let destInput = this;
 
-  destination.date = new Date();
+  destInput.trip = PersonService.mainUser.currentTrip;
 
-  destination.mainUser = PersonService.mainUser;
-  // destination.set = PersonService.mainUser.currentTrip.setDestination;
+  destInput.searchForm = destInput.trip.createSearchForm(destInput.trip);
 
-  destination.set = function(address) {
+  // would like to add the 3 functions below to SearchForm class
+  destInput.setTripInfo = function(address, date) {
+    setDestination(address);
+    setDesiredEta(date);
+    console.log(destInput.trip);
+  };
+
+  let setDestination = function(address) {
     let addressObject = {address: address};
-    console.log(addressObject);
     $http.post('/geocode/search', addressObject).then(function(response) {
-      console.log(response);
       let result = response.data.results[0];
-      PersonService.mainUser.currentTrip.setDestination(result);
-      console.log(PersonService.mainUser.currentTrip.destination);
+      destInput.trip.setDestination(result);
     });
+  };
+
+  let setDesiredEta = function(date) {
+    destInput.trip.setDesiredEta(date);
   };
 
 
 
 
-destination.logout = UserService.logout;
+
+
+destInput.logout = UserService.logout;
 
 
 
