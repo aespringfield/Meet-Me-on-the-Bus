@@ -1,10 +1,11 @@
 var express = require('express');
 var GoogleMapsAPI = require('googlemaps');
+var API_KEY = require('./apiKey')
 
 console.log('google maps api hooked in');
 
 var config = {
-  key: 'AIzaSyC1z0jkEeeLyD8_ly3-X78LNSrfffXvaf0',
+  key: ,
   encode_polylines: false,
   secure: true
 };
