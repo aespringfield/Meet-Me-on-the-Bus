@@ -69,24 +69,34 @@ class MainUser extends Person  {
 
     // will be able to store own route params
 
-// class InvitedPerson extends person
+class InvitedPerson extends Person {
 
-  // constructor (person, responded = false)
+  // person is an object
+  constructor (person, responded = false) {
+    super (person.firstName, person.lastName, person.email);
+    this.responded = responded;
+    this.origin = new Origin();
+    this.selectedRoute = undefined;
+    this.routeOptions = [];
+  }
+    setResponded(value) {
+      this.responded = value;
+      return this.responded;
+    }
 
-    // super (person.firstName, person.lastName, person.email)
+    getResponded() {
+      return this.responded;
+    }
 
-    // selectedRoute : {}
+    getOrigin() {
+      return this.origin;
+    }
 
-    // routeOptions : []
-
-    // origin : {Origin}
-
-    // setResponded()
-
-    // getResponded()
-
-    // getOrigin()
-
-    // setOrigin() - instantiates RouteParams object and stores in routeParams property
+    // stores location and earliest depart time in Origin object
+    setOrigin(location, earliestDepartTime) {
+      this.origin.location = location;
+      this.origin.earliestDepartTime = earliestDepartTime;
+    }
 
     // selectRoute()
+}

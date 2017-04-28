@@ -1,0 +1,32 @@
+<div class="container">
+  <form class="originForm" ng-submit="originInput.setTripInfo(originInput.searchForm.address, originInput.searchForm.date)">
+    <div layout="row">
+      <div class="center">
+      <md-input-container>
+        <label for="originInput">Where are you coming from?</label>
+        <input type="text" id="originInput" ng-model="originInput.searchForm.address" name="" value="" placeholder="Origin">
+      </md-input-container>
+    </div>
+    </div>
+    <div class="center">
+    <div layout="row">
+      <div layout="column">
+        <div flex class="center">
+          <md-content>
+              <mdp-time-picker ng-model="originInput.searchForm.date"></mdp-time-picker>
+            </md-content>
+        </div>
+      </div>
+      <div flex>
+        <md-content>
+          <div>
+            <mdp-date-picker ng-model="originInput.searchForm.date" ng-change="originInput.log(originInput.date)" md-placeholder="Enter date"></mdp-date-picker>
+          </div>
+        </md-content>
+      </div>
+    </div>
+  </div>
+    <input type="submit" value="Submit"></input>
+
+  </form>
+</div>

@@ -21,6 +21,16 @@ myApp.config(['$routeProvider', function($routeProvider) {
         }
       }
     })
+    .when('/originInput', {
+      templateUrl: '/views/templates/originInput.html',
+      controller: 'OriginInputController',
+      controllerAs: 'originInput',
+      resolve: {
+        getuser : function(UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });

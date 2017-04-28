@@ -21,5 +21,6 @@ class Origin extends Location {
   constructor (location, earliestDepartTime) {
     super (location);
     this.earliestDepartTime = earliestDepartTime;
+    this.type = 'origin';
   }
  }
