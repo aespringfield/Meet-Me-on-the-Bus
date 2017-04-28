@@ -1,6 +1,6 @@
 class Trip {
 
-  constructor (destination = {}, desiredEta = {}, eta = {}) {
+  constructor (destination, desiredEta, eta) {
     this.destination = destination;
     this.desiredEta = desiredEta;
     this.eta = eta;
@@ -21,6 +21,17 @@ class Trip {
     return this.destination;
   }
 
+  // should this be wrapped into a destination object?
+  setDesiredEta(desiredEta) {
+    this.desiredEta = desiredEta;
+    return this.desiredEta;
+  }
+
+  // should this be wrapped into a destination object?
+  getDesiredEta() {
+    return this.desiredEta;
+  }
+
   setEta(eta) {
     this.eta = eta;
     return this.eta;
@@ -30,8 +41,31 @@ class Trip {
     return this.eta;
   }
 
-    // saveTrip() (creates object with info to store and POSTS to DB)
+  createSearchForm(trip) {
+    let address, date, searchForm;
+    if (trip.destination && trip.desiredEta) {
+      address = trip.destination.formatted_address;
+      date = trip.desiredEta;
+      searchForm = new SearchForm(address, date);
+    } else {
+      address = '';
+      date = new Date();
+      searchForm = new SearchForm(address, date);
+    }
+    return searchForm;
+  }
 
-    // updateTrip() (calls setEta() to update ETA and sends PUT request to
-      //with updated ETA and group data)
+  // saveTrip() (creates object with info to store and POSTS to DB)
+
+  // calls setEta() to update ETA sends PUT request to DB with updated ETA and group data)
+  // updateTripEta()
+
+  // calls setDestination() and setDesiredEta()
+  // will eventually save to DB
+  updateTripDestination(address, date){
+    setDestination(address);
+    setDesiredEta(date);
+  }
+
+
 }
