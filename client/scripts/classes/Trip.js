@@ -41,11 +41,25 @@ class Trip {
     return this.eta;
   }
 
-  createSearchForm(trip) {
+  // clean these two up by combining them and determining which class they should live in
+  createDestSearchForm(trip) {
     let address, date, searchForm;
     if (trip.destination && trip.desiredEta) {
       address = trip.destination.formatted_address;
       date = trip.desiredEta;
+      searchForm = new SearchForm(address, date);
+    } else {
+      address = '';
+      date = new Date();
+      searchForm = new SearchForm(address, date);
+    }
+    return searchForm;
+  }
+  createOriginSearchForm(person) {
+    let address, date, searchForm;
+    if (person.origin.formatted_address && person.origin.earliestDepartTime) {
+      address = person.origin.formatted_address;
+      date = person.origin.earliestDepartTime;
       searchForm = new SearchForm(address, date);
     } else {
       address = '';

@@ -4,9 +4,19 @@ class PeopleManager {
     this.peopleArray = peopleArray;
   }
 
-  // findPerson(keyName, keyValue)
+  findPerson(keyName, keyValue) {
+    for (let i = 0; i < this.peopleArray.length; i++) {
+      let person = this.peopleArray[i];
+      if (person[keyName] === keyValue) {
+        return person;
+      }
+    }
+  }
 
-  // add(person)
+  add(person) {
+    this.peopleArray.push(person);
+    return this.peopleArray[-1];
+  }
 
   // remove(person)
 
@@ -30,9 +40,29 @@ class GroupManager extends PeopleManager {
     super(peopleArray);
   }
 
-  // invite(person) constructs new InvitedPerson object from person object and pushes to this.peopleArray
+  // constructs new InvitedPerson object from person object and pushes to this.peopleArray
+  invite(person) {
+    let invitedPerson = new InvitedPerson(person);
+    return this.add(invitedPerson);
+  }
 
-  // getPeopleByResponded() returns an object containing two arrays:
+  // returns an object containing two arrays:
     // respondeeArray : array of people from peopleArray who have responded
     // nonRespondeeArray : array of people from peopleArray who have not responded
+  getPeopleByResponded() {
+    let respondeeArray = [];
+    let nonRespondeeArray = [];
+    for (let i = 0; i < this.peopleArray.length; i++) {
+      let person = this.peopleArray[i];
+      if (person.responded) {
+        respondeeArray.push(person);
+      } else if (!person.responded) {
+        nonRespondeeArray.push(person);
+      }
+    }
+    return {
+      respondeeArray,
+      nonRespondeeArray
+    }
+  }
 }
