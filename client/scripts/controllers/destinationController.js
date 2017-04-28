@@ -1,32 +1,26 @@
-myApp.controller('DestinationController', ['$scope', 'UserService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($scope, UserService, moment, $mdpDatePicker, mdpTimePicker) {
+myApp.controller('DestinationController', ['$http', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let destination = this;
-  destination.date = moment();
-  destination.moment = moment;
-  console.log(destination.date);
 
-  function convertToTime(date) {
-    return moment(date).format('LT');
-  }
-  destination.dateInput = new Date()
-  destination.time = convertToTime(destination.date);
-  let tim = moment(destination.time, 'LT');
-  console.log(tim);
-  destination.logout = UserService.logout;
-  destination.log = function(thing) {
-    console.log("hey");
-    console.log(thing);
-    console.log(moment(thing));
-    console.log(moment(thing).valueOf());
-  }
+  destination.date = new Date();
+
+  destination.mainUser = PersonService.mainUser;
+  // destination.set = PersonService.mainUser.currentTrip.setDestination;
+
+  destination.set = function(address) {
+    let addressObject = {address: address};
+    console.log(addressObject);
+    $http.post('/geocode/search', addressObject).then(function(response) {
+      console.log(response);
+      let result = response.data.results[0];
+      PersonService.mainUser.currentTrip.setDestination(result);
+      console.log(PersonService.mainUser.currentTrip.destination);
+    });
+  };
 
 
-  // destination.currentDate = new Date();
-// destination.showTimePicker = function(ev) {
-//   $mdpTimePicker(destination.currentTime, {
-//     targetEvent: ev
-//   }).then(function(selectedDate) {
-//     destination.currentTime = selectedDate;
-//   });
+
+
+destination.logout = UserService.logout;
 
 
 

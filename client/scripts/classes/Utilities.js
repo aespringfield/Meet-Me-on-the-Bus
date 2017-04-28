@@ -35,4 +35,11 @@ class Utilities {
     });
   }
 
+  static geocode(address) {
+    $http.post('/geocode/' + this.address).then(function(response) {
+      console.log(response);
+      return response;
+    });
+  }
+
 }
