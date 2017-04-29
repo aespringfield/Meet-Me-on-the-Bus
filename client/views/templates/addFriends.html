@@ -1,0 +1,12 @@
+<div class="container">
+  <div ng-repeat="friend in friends.peopleArray">
+    <div>
+      <i class="material-icons">mode_edit</i>
+      <p>{{friend.getShortName()}}</p>
+      <i class="material-icons">clear</i>
+    </div>
+  </div>
+  <div>
+    <md-button ng-click="friends.goTo('/newFriend')"><i class="material-icons">add</i></md-button>
+  </div>
+</div>

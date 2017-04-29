@@ -1,12 +1,4 @@
-myApp.controller('IndivDetailsController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
-
-  // indivDetails.chooseIcon = function(number) {
-  //   if (number % 2 == 0) {
-  //     return 'directions_walk';
-  //   } else {
-  //     return 'directions_bus';
-  //   }
-  // }
+myApp.controller('IndivDetailsController', ['UserService', 'PersonService', 'moment', function (UserService, PersonService, moment) {
 
   let indivDetails = this;
   let person = PersonService.findInvitedPerson('mainUser', true);

@@ -37,7 +37,7 @@ class Person {
 
   // returns string with shortened version of full name (e.g. "Anna S.")
   getShortName() {
-    let shortName = this.firstName + ' ' + this._getInitial(this.lastName);
+    let shortName = this.firstName + ' ' + this._getInitial(this.lastName) + '.';
     return shortName;
   }
 }
@@ -48,9 +48,9 @@ class Person {
 class MainUser extends Person  {
   constructor(firstName, lastName, email) {
     super(firstName, lastName, email);
-      // this.friendsManager = new FriendsManager;
       this.tripsArray = [];
       this.currentTrip = new Trip();
+      this.friendsManager = new FriendsManager();
   }
 
   // saves a currentTrip to the tripsArray

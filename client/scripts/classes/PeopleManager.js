@@ -22,9 +22,11 @@ class PeopleManager {
 
 }
 
-// class FriendsManager extends PeopleManager
+class FriendsManager extends PeopleManager {
 
-  // constructor ()
+  constructor (peopleArray = []) {
+    super(peopleArray);
+  }
 
   // override add(person) to make POST request to DB
 
@@ -33,6 +35,8 @@ class PeopleManager {
   // getFriends() sends GET request to retrieve all friends from DB
 
   // update(person, keyName, keyValue) calls person.setKey(keyName, keyValue) and then makes UPDATE request to DB
+
+}
 
 class GroupManager extends PeopleManager {
 

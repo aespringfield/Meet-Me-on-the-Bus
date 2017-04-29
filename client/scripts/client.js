@@ -41,6 +41,26 @@ myApp.config(['$routeProvider', function($routeProvider) {
         }
       }
     })
+    .when('/addFriends', {
+      templateUrl: '/views/templates/addFriends.html',
+      controller: 'FriendsController',
+      controllerAs: 'friends',
+      resolve: {
+        getuser : function(UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
+    .when('/newFriend', {
+      templateUrl: '/views/templates/newFriend.html',
+      controller: 'FriendsController',
+      controllerAs: 'friends',
+      resolve: {
+        getuser : function(UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });
