@@ -1,7 +1,7 @@
 <div class="container">
-  <form class="originForm" ng-submit="originInput.setTripInfo(originInput.searchForm.address, originInput.searchForm.date)">
+  <form class="originForm" ng-submit="originInput.setOrigin(originInput.searchForm.address, originInput.searchForm.date)">
     <div layout="row">
-      <div class="center">
+      <div class="">
       <md-input-container>
         <label for="originInput">Where are you coming from?</label>
         <input type="text" id="originInput" ng-model="originInput.searchForm.address" name="" value="" placeholder="Origin">
@@ -27,6 +27,6 @@
     </div>
   </div>
     <input type="submit" value="Submit"></input>
-
   </form>
+  <button ng-click="originInput.getRoute(originInput.person.origin.formatted_address, originInput.trip.destination.formatted_address, originInput.person.origin.earliestDepartTime, 'departure_time')">Get route</button>
 </div>

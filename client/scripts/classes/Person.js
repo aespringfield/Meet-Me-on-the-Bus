@@ -72,8 +72,10 @@ class MainUser extends Person  {
 class InvitedPerson extends Person {
 
   // person is an object
-  constructor (person, responded = false) {
+  // why using default parameters even when a value is passed in?
+  constructor (person, mainUser = false, responded = false) {
     super (person.firstName, person.lastName, person.email);
+    this.mainUser = mainUser;
     this.responded = responded;
     this.origin = new Origin();
     this.selectedRoute = undefined;
@@ -90,12 +92,6 @@ class InvitedPerson extends Person {
 
     getOrigin() {
       return this.origin;
-    }
-
-    // stores location and earliest depart time in Origin object
-    setOrigin(location, earliestDepartTime) {
-      this.origin.location = location;
-      this.origin.earliestDepartTime = earliestDepartTime;
     }
 
     // selectRoute()

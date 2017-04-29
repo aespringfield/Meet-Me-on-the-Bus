@@ -1,36 +1,24 @@
-myApp.controller('OriginInputController', ['$http', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
+myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let originInput = this;
 
   originInput.trip = PersonService.mainUser.currentTrip;
+  originInput.person = PersonService.findPerson('mainUser', true);
+  originInput.getRoute = PersonService.getRoute;
 
-  originInput.searchForm = originInput.trip.createSearchForm(originInput.trip);
+  originInput.searchForm = originInput.trip.createOriginSearchForm(originInput.person);
 
-  // would like to add the 3 functions below to SearchForm class
-  originInput.setTripInfo = function(address, date) {
-    setDestination(address);
-    setDesiredEta(date);
-    console.log(originInput.trip);
-  };
-
-  let setDestination = function(address) {
+  // would like to add this function to a class (SearchForm? InvitedPerson? Origin?)
+  originInput.setOrigin = function(address, date) {
     let addressObject = {address: address};
     $http.post('/geocode/search', addressObject).then(function(response) {
       let result = response.data.results[0];
-      originInput.trip.setDestination(result);
+      originInput.person.origin.setFrom(result);
+      console.log(originInput.trip);
     });
+
+    originInput.person.origin.setEarliestDepartTime(date);
   };
 
-  let setDesiredEta = function(date) {
-    originInput.trip.setDesiredEta(date);
-  };
-
-
-
-
-
-
-originInput.logout = UserService.logout;
-
-
+  originInput.logout = UserService.logout;
 
 }]);

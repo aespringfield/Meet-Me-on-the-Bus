@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var geocode = require('./routes/geocode');
+var directions = require('./routes/directions');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use(passport.session());
 app.use('/register', register);
 app.use('/user', user);
 app.use('/geocode', geocode);
+app.use('/directions', directions);
 app.use('/*', index);
 
 // Mongo Connection //

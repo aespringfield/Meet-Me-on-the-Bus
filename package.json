@@ -28,6 +28,7 @@
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^1.0.0",
+    "material-design-icons": "^3.0.1",
     "mdPickers": "^0.7.5",
     "moment": "^2.18.1",
     "mongoose": "^4.4.6",
