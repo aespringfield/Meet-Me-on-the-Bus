@@ -20,7 +20,7 @@
       <div flex>
         <md-content>
           <div>
-            <mdp-date-picker ng-model="originInput.searchForm.date" ng-change="originInput.log(originInput.date)" md-placeholder="Enter date"></mdp-date-picker>
+            <mdp-date-picker ng-model="originInput.searchForm.date" md-placeholder="Enter date"></mdp-date-picker>
           </div>
         </md-content>
       </div>
@@ -28,5 +28,4 @@
   </div>
     <input type="submit" value="Submit"></input>
   </form>
-  <button ng-click="originInput.getRoute(originInput.person.origin.formatted_address, originInput.trip.destination.formatted_address, originInput.person.origin.earliestDepartTime, 'departure_time')">Get route</button>
 </div>
