@@ -6,32 +6,37 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
 
   console.log(mainUser);
 
-  let findPerson = function(keyName, keyValue) {
+  let findInvitedPerson = function(keyName, keyValue) {
     return mainUser.currentTrip.groupManager.findPerson(keyName, keyValue);
   };
 
-
-
-  // store this in appropriate class
+  // move to class?
   // origin & destination are formatted addresses
   // date is milliseconds since 1/1/1970
   // searchBy is either 'arrival_time' or 'departure_time'
-  let getRoute = function(origin, destination, date, searchBy) {
+  let requestRoute = function(routeObject, person, callback) {
     let directionsParams = {
-      origin: origin,
-      destination: destination,
-      date: date,
-      searchBy: searchBy,
+      origin: routeObject.origin,
+      destination: routeObject.destination,
+      date: routeObject.date,
+      searchBy: routeObject.searchBy,
     };
     $http.post('/directions/getRoute', directionsParams).then(function(response) {
-      let results = response.data;
-      console.log(results);
+      let directionsObject = response.data;
+      console.log(directionsObject);
+      person.setRoute(directionsObject);
+      callback();
     });
-  };
+  }
+
+  let getSteps = function(person) {
+    return person.route.getSteps();
+  }
 
   return {
     mainUser: mainUser,
-    findPerson: findPerson,
-    getRoute: getRoute
+    findInvitedPerson: findInvitedPerson,
+    requestRoute: requestRoute,
+    getSteps: getSteps
   };
 }]);

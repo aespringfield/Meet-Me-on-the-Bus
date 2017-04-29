@@ -1,22 +1,33 @@
 myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let originInput = this;
 
-  originInput.trip = PersonService.mainUser.currentTrip;
-  originInput.person = PersonService.findPerson('mainUser', true);
-  originInput.getRoute = PersonService.getRoute;
+  let trip = PersonService.mainUser.currentTrip;
+  let person = PersonService.findInvitedPerson('mainUser', true);
+  let requestRoute = PersonService.requestRoute;
 
-  originInput.searchForm = originInput.trip.createOriginSearchForm(originInput.person);
+  function goToDetails() {
+    $location.path('/indivDetails');
+  }
+
+  originInput.searchForm = trip.createOriginSearchForm(person);
 
   // would like to add this function to a class (SearchForm? InvitedPerson? Origin?)
   originInput.setOrigin = function(address, date) {
     let addressObject = {address: address};
     $http.post('/geocode/search', addressObject).then(function(response) {
       let result = response.data.results[0];
-      originInput.person.origin.setFrom(result);
-      console.log(originInput.trip);
+      person.origin.setFrom(result);
+      console.log(trip);
+      let routeObject = {
+        origin: person.origin.formatted_address,
+        destination: trip.destination.formatted_address,
+        date: person.origin.earliestDepartTime,
+        searchBy: 'departure_time'
+      };
+      requestRoute(routeObject, person, goToDetails);
     });
 
-    originInput.person.origin.setEarliestDepartTime(date);
+    person.origin.setEarliestDepartTime(date);
   };
 
   originInput.logout = UserService.logout;

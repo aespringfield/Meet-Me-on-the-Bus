@@ -31,6 +31,16 @@ myApp.config(['$routeProvider', function($routeProvider) {
         }
       }
     })
+    .when('/indivDetails', {
+      templateUrl: '/views/templates/indivDetails.html',
+      controller: 'IndivDetailsController',
+      controllerAs: 'indivDetails',
+      resolve: {
+        getuser : function(UserService) {
+          return UserService.getuser();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });

@@ -78,8 +78,7 @@ class InvitedPerson extends Person {
     this.mainUser = mainUser;
     this.responded = responded;
     this.origin = new Origin();
-    this.selectedRoute = undefined;
-    this.routeOptions = [];
+    this.route = undefined;
   }
     setResponded(value) {
       this.responded = value;
@@ -94,5 +93,11 @@ class InvitedPerson extends Person {
       return this.origin;
     }
 
-    // selectRoute()
+    // sets route from data on object sent from Google Maps API Directions Service
+    setRoute(directionsObject) {
+      this.route = new Route(directionsObject);
+      this.setResponded(true);
+      console.log(this);
+      return this.route;
+    }
 }
