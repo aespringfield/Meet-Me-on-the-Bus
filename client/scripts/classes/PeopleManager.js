@@ -41,8 +41,8 @@ class GroupManager extends PeopleManager {
   }
 
   // constructs new InvitedPerson object from person object and pushes to this.peopleArray
-  invite(person) {
-    let invitedPerson = new InvitedPerson(person);
+  invite(person, mainUser = false, responded = false) {
+    let invitedPerson = new InvitedPerson(person, mainUser, responded);
     return this.add(invitedPerson);
   }
 

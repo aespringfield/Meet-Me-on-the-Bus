@@ -25,13 +25,6 @@ myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'P
     destInput.trip.setDesiredEta(date);
   };
 
-
-
-
-
-
-destInput.logout = UserService.logout;
-
-
+  destInput.logout = UserService.logout;
 
 }]);

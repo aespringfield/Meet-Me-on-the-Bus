@@ -2,8 +2,8 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
   let originInput = this;
 
   originInput.trip = PersonService.mainUser.currentTrip;
-  originInput.person = PersonService.mainUser.currentTrip.groupManager.findPerson('firstName', 'Lucinda');
-  // originInput.person = PersonService.mainUser.currentTrip.groupManager.findPerson('mainUser', true);
+  originInput.person = PersonService.findPerson('mainUser', true);
+  originInput.getRoute = PersonService.getRoute;
 
   originInput.searchForm = originInput.trip.createOriginSearchForm(originInput.person);
 
@@ -15,6 +15,7 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
       originInput.person.origin.setFrom(result);
       console.log(originInput.trip);
     });
+
     originInput.person.origin.setEarliestDepartTime(date);
   };
 
