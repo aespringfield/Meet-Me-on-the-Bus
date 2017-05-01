@@ -12,6 +12,7 @@ class PeopleManager {
         return person;
       }
     }
+    return false;
   }
 
   add(person) {

@@ -1,9 +1,11 @@
 myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let originInput = this;
 
-  let trip = PersonService.mainUser.currentTrip;
-  let person = PersonService.findInvitedPerson('mainUser', true);
+  let trip = PersonService.userControl.mainUser.currentTrip;
+  let person = trip.groupManager.focusPerson;
   let requestRoute = PersonService.requestRoute;
+
+  console.log("person is", person);
 
   function goToFriends() {
     $location.path('/addFriends');

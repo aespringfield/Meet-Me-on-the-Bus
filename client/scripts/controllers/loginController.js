@@ -1,4 +1,4 @@
-myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', function($scope, $http, $location, UserService) {
+myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', 'PersonService', function($scope, $http, $location, UserService, PersonService) {
     $scope.user = {
       username: '',
       password: '',
@@ -17,6 +17,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
             console.log('success: ', response.data);
             // location works with SPA (ng-route)
             console.log('redirecting to destination input page');
+            PersonService.getUser(PersonService.instantiateMainUser);
             $location.path('/destInput');
           } else {
             console.log('failure: ', response);

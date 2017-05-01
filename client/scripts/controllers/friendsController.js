@@ -1,7 +1,7 @@
 myApp.controller('FriendsController', ['$http', '$location', 'UserService', 'PersonService', 'moment', function ($http, $location, UserService, PersonService, moment) {
   friends = this;
-  let trip = PersonService.mainUser.currentTrip;
-  let friendsManager = PersonService.mainUser.friendsManager;
+  let trip = PersonService.userControl.mainUser.currentTrip;
+  let friendsManager = PersonService.userControl.mainUser.friendsManager;
 
   friends.peopleArray = friendsManager.peopleArray;
 
@@ -17,7 +17,13 @@ myApp.controller('FriendsController', ['$http', '$location', 'UserService', 'Per
   };
 
   friends.addOriginFor = function(friend) {
-    trip.groupManager.focusPerson = trip.groupManager.invite(friend);
+    let invitedFriend = trip.groupManager.findPerson('email', friend.email);
+    console.log('invitedFriend is', invitedFriend);
+    if (invitedFriend) {
+      trip.groupManager.focusPerson = invitedFriend;
+    } else if (!invitedFriend) {
+      trip.groupManager.focusPerson = trip.groupManager.invite(friend);
+    }
     friends.goTo('/originInput');
   }
 

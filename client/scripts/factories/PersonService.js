@@ -8,22 +8,18 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
     mainUser: new MainUser()
   };
 
-  let mainUser = userControl.mainUser;
-
-
-  //mainUser.currentTrip.groupManager.invite(mainUser, true);
-
-  console.log(mainUser);
-
   let findInvitedPerson = function(keyName, keyValue) {
-    return mainUser.currentTrip.groupManager.findPerson(keyName, keyValue);
+    return userControl.mainUser.currentTrip.groupManager.findPerson(keyName, keyValue);
   };
 
   // move to utilities?
-  // currently this is not being used
-  let instantiateMainUser = function(user) {
-    userControl.mainUser = new MainUser(user.firstName, user.lastName, user.username);
-    return mainUser;
+  let instantiateMainUser = function(response) {
+    userControl.mainUser = new MainUser(response.data.firstName, response.data.lastName, response.data.username)
+    console.log('Email: ', userControl.mainUser.getEmail(), '\n',
+    'Name: ', userControl.mainUser.getFullName());
+    console.log(userControl.mainUser);
+    let invitedMainUser = userControl.mainUser.currentTrip.groupManager.invite(userControl.mainUser, true);
+    userControl.mainUser.currentTrip.groupManager.setFocusPerson(invitedMainUser);
   }
 
   // move to class?
@@ -49,30 +45,28 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
     return person.route.getSteps();
   }
 
-  let getUser = function(){
+  let getUser = function(callback){
     $http.get('/user').then(function(response) {
         if(response.data.username) {
             // user has a current session on the server
             userObject.userName = response.data.username;
-            userControl.mainUser = new MainUser(response.data.firstName, response.data.lastName, response.data.username)
-            console.log('Email: ', userControl.mainUser.getEmail(), '\n',
-            'Name: ', userControl.mainUser.getFullName());
-            console.log(userControl.mainUser);
-            let invitedMainUser = userControl.mainUser.currentTrip.groupManager.invite(userControl.mainUser, true);
-            userControl.mainUser.currentTrip.groupManager.setFocusPerson(invitedMainUser);
+            if (callback) {
+              callback(response);
+            }
         } else {
             // user has no session, bounce them back to the login page
-            $location.path("/home");
+            $location.path('/home');
         }
     });
   };
 
   return {
     userObject: userObject,
-    mainUser: mainUser,
+    userControl: userControl,
     findInvitedPerson: findInvitedPerson,
     requestRoute: requestRoute,
     getSteps: getSteps,
-    getUser: getUser
+    getUser: getUser,
+    instantiateMainUser: instantiateMainUser
   };
 }]);
