@@ -1,7 +1,9 @@
-myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', function($scope, $http, $location, UserService) {
+myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', 'PersonService', function($scope, $http, $location, UserService, PersonService) {
     $scope.user = {
       username: '',
-      password: ''
+      password: '',
+      firstName: '',
+      lastName: '',
     };
     $scope.message = '';
 
@@ -14,15 +16,16 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
           if(response.data.username) {
             console.log('success: ', response.data);
             // location works with SPA (ng-route)
-            console.log('redirecting to user page');
-            $location.path('/user');
+            console.log('redirecting to destination input page');
+            PersonService.getUser(PersonService.instantiateMainUser);
+            $location.path('/destInput');
           } else {
             console.log('failure: ', response);
             $scope.message = "Wrong!!";
           }
         });
       }
-    }
+    };
 
     $scope.registerUser = function() {
       if($scope.user.username == '' || $scope.user.password == '') {
@@ -35,8 +38,10 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
         },
         function(response) {
           console.log('error');
-          $scope.message = "Please try again."
+          $scope.message = "Please try again.";
         });
       }
-    }
+    };
+
+
 }]);

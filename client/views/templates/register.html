@@ -3,13 +3,27 @@
   <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
   <form ng-submit="registerUser()">
     <div>
+      <md-input>
         <label for="username">Username:</label>
         <input type="text" ng-model="user.username" />
+      </md-input>
     </div>
     <div>
         <label for="password">Password:</label>
         <input type="password" ng-model="user.password" />
     </div>
+  <div>
+    <md-input>
+      <label for="firstName">First name:</label>
+      <input type="firstName" ng-model="user.firstName" />
+    </md-input>
+  </div>
+  <div>
+    <md-input>
+      <label for="lastName">Last name:</label>
+      <input type="lastName" ng-model="user.lastName" />
+    </md-input>
+  </div>
     <input class="btn btn-default" type="submit" name="submit" value="Register" />
     <a href="#home">Cancel</a>
   </form>

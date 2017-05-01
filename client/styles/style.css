@@ -1,4 +1,4 @@
-.instructions .container h1 {
+/*.instructions .container h1 {
     font-size: 24px;
     font-weight: 700;
 }
@@ -16,9 +16,7 @@
     margin-top: 10px;
 }
 
-.container p{
-    margin-top : 14px;
-}
+
 
 .message {
     padding: 10px 0;
@@ -38,7 +36,17 @@
 
 .btn-danger{
     margin-left: 10px;
+}*/
+
+.container{
+    padding : 20px;
 }
+
+.center {
+  margin: 0 auto;
+}
+
+
 /*h1 {
   color: salmon;
 }*/

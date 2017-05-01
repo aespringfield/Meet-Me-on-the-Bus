@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'angularMoment']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'mdPickers', 'angularMoment']);
 
 // Routes
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -7,17 +7,57 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/templates/home.html',
       controller: 'LoginController',
     })
-    .when('/registration', {
-      templateUrl: '/views/templates/registration.html',
+    .when('/register', {
+      templateUrl: '/views/templates/register.html',
       controller: 'LoginController',
     })
-    .when('/user', {
-      templateUrl: '/views/templates/destination.html',
-      controller: 'DestinationController',
-      controllerAs: 'destination',
+    .when('/destInput', {
+      templateUrl: '/views/templates/destInput.html',
+      controller: 'DestInputController',
+      controllerAs: 'destInput',
       resolve: {
-        getuser : function(UserService) {
-          return UserService.getuser();
+        getUser : function(PersonService) {
+          return PersonService.getUser();
+        }
+      }
+    })
+    .when('/originInput', {
+      templateUrl: '/views/templates/originInput.html',
+      controller: 'OriginInputController',
+      controllerAs: 'originInput',
+      resolve: {
+        getUser : function(PersonService) {
+          return PersonService.getUser();
+        }
+      }
+    })
+    .when('/indivDetails', {
+      templateUrl: '/views/templates/indivDetails.html',
+      controller: 'IndivDetailsController',
+      controllerAs: 'indivDetails',
+      resolve: {
+        getUser : function(PersonService) {
+          return PersonService.getUser();
+        }
+      }
+    })
+    .when('/addFriends', {
+      templateUrl: '/views/templates/addFriends.html',
+      controller: 'FriendsController',
+      controllerAs: 'friends',
+      resolve: {
+        getUser : function(PersonService) {
+          return PersonService.getUser();
+        }
+      }
+    })
+    .when('/newFriend', {
+      templateUrl: '/views/templates/newFriend.html',
+      controller: 'FriendsController',
+      controllerAs: 'friends',
+      resolve: {
+        getUser : function(PersonService) {
+          return PersonService.getUser();
         }
       }
     })
