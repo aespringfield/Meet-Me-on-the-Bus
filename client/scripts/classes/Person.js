@@ -20,6 +20,10 @@ class Person {
     return this.firstName;
   }
 
+  getFullName() {
+    return this.firstName + ' ' + this.lastName; 
+  }
+
   getEmail() {
     return this.email;
   }

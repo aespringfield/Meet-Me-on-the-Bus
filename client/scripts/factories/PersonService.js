@@ -2,7 +2,9 @@
 myApp.factory('PersonService', ['$http', '$location', function($http, $location){
   let mainUser = new MainUser('Lucinda', 'Williams', 'lucinda@lucinda.com');
 
+  // make userControl its own class?
   userControl = {}
+
   userObject = {};
   mainUser.currentTrip.groupManager.invite(mainUser, true, true);
 
@@ -13,6 +15,7 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
   };
 
   // move to utilities?
+  // currently this is not being used
   let instantiateMainUser = function(user) {
     userControl.mainUser = new MainUser(user.firstName, user.lastName, user.username);
     return mainUser;
@@ -44,9 +47,11 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
   let getUser = function(){
     $http.get('/user').then(function(response) {
         if(response.data.username) {
-            // user has a curret session on the server
+            // user has a current session on the server
             userObject.userName = response.data.username;
-            console.log('User Data: ', userObject.userName);
+            userControl.mainUser = new MainUser(response.data.firstName, response.data.lastName, response.data.username)
+            console.log('Email: ', userControl.mainUser.getEmail(), '\n',
+            'Name: ', userControl.mainUser.getFullName());
         } else {
             // user has no session, bounce them back to the login page
             $location.path("/home");
