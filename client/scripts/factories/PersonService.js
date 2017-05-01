@@ -1,12 +1,17 @@
 // Controls management of user info and friends
 myApp.factory('PersonService', ['$http', '$location', function($http, $location){
-  let mainUser = new MainUser('Lucinda', 'Williams', 'lucinda@lucinda.com');
+  // let mainUser = new MainUser('Lucinda', 'Williams', 'lucinda@lucinda.com');
 
   // make userControl its own class?
-  userControl = {}
+  let userObject = {};
+  let userControl = {
+    mainUser: new MainUser()
+  };
 
-  userObject = {};
-  mainUser.currentTrip.groupManager.invite(mainUser, true, true);
+  let mainUser = userControl.mainUser;
+
+
+  //mainUser.currentTrip.groupManager.invite(mainUser, true);
 
   console.log(mainUser);
 
@@ -52,6 +57,9 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
             userControl.mainUser = new MainUser(response.data.firstName, response.data.lastName, response.data.username)
             console.log('Email: ', userControl.mainUser.getEmail(), '\n',
             'Name: ', userControl.mainUser.getFullName());
+            console.log(userControl.mainUser);
+            let invitedMainUser = userControl.mainUser.currentTrip.groupManager.invite(userControl.mainUser, true);
+            userControl.mainUser.currentTrip.groupManager.setFocusPerson(invitedMainUser);
         } else {
             // user has no session, bounce them back to the login page
             $location.path("/home");

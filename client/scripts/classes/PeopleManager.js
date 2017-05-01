@@ -16,7 +16,12 @@ class PeopleManager {
 
   add(person) {
     this.peopleArray.push(person);
-    return this.peopleArray[-1];
+    return this.peopleArray[this.peopleArray.length-1];
+  }
+
+  setFocusPerson(person) {
+    this.focusPerson = person;
+    return this.focusPerson;
   }
 
   // remove(person)
