@@ -1,7 +1,9 @@
 myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let destInput = this;
 
-  destInput.trip = PersonService.mainUser.currentTrip;
+  destInput.trip = PersonService.userControl.mainUser.currentTrip;
+
+  console.log('in dest. trip is', destInput.trip);
 
   destInput.searchForm = destInput.trip.createDestSearchForm(destInput.trip);
 

@@ -2,6 +2,7 @@ class PeopleManager {
 
   constructor (peopleArray = []) {
     this.peopleArray = peopleArray;
+    this.focusPerson = undefined;
   }
 
   findPerson(keyName, keyValue) {
@@ -11,20 +12,32 @@ class PeopleManager {
         return person;
       }
     }
+    return false;
   }
 
   add(person) {
     this.peopleArray.push(person);
-    return this.peopleArray[-1];
+    return this.peopleArray[this.peopleArray.length-1];
+  }
+
+  setFocusPerson(person) {
+    this.focusPerson = person;
+    return this.focusPerson;
+  }
+
+  getFocusPerson(person) {
+    return this.focusPerson;
   }
 
   // remove(person)
 
 }
 
-// class FriendsManager extends PeopleManager
+class FriendsManager extends PeopleManager {
 
-  // constructor ()
+  constructor (peopleArray = []) {
+    super(peopleArray);
+  }
 
   // override add(person) to make POST request to DB
 
@@ -33,6 +46,8 @@ class PeopleManager {
   // getFriends() sends GET request to retrieve all friends from DB
 
   // update(person, keyName, keyValue) calls person.setKey(keyName, keyValue) and then makes UPDATE request to DB
+
+}
 
 class GroupManager extends PeopleManager {
 
@@ -44,6 +59,20 @@ class GroupManager extends PeopleManager {
   invite(person, mainUser = false, responded = false) {
     let invitedPerson = new InvitedPerson(person, mainUser, responded);
     return this.add(invitedPerson);
+  }
+
+  // returns the ETA of the individual who is currently scheduled to arrive last
+  findLastIndivEta() {
+    let latestEta = this.focusPerson.route.getArrivalTime('value');
+    if (this.peopleArray.length < 1) {
+      for (let i = 0; i < this.peopleArray.length; i++) {
+        let currentEta = this.peopleArray[i];
+        if (currentEta > latestEta) {
+          latestEta = currentEta;
+        }
+      }
+    }
+    return latestEta;
   }
 
   // returns an object containing two arrays:

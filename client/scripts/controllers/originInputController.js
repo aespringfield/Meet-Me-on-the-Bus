@@ -1,12 +1,14 @@
 myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let originInput = this;
 
-  let trip = PersonService.mainUser.currentTrip;
-  let person = PersonService.findInvitedPerson('mainUser', true);
+  let trip = PersonService.userControl.mainUser.currentTrip;
+  let person = trip.groupManager.focusPerson;
   let requestRoute = PersonService.requestRoute;
 
-  function goToDetails() {
-    $location.path('/indivDetails');
+  console.log("person is", person);
+
+  function goToFriends() {
+    $location.path('/addFriends');
   }
 
   originInput.searchForm = trip.createOriginSearchForm(person);
@@ -24,7 +26,7 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
         date: person.origin.earliestDepartTime,
         searchBy: 'departure_time'
       };
-      requestRoute(routeObject, person, goToDetails);
+      requestRoute(routeObject, trip, goToFriends);
     });
 
     person.origin.setEarliestDepartTime(date);

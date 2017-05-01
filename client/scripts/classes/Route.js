@@ -35,14 +35,16 @@ class Route {
     return this.overview_polyline;
   }
 
-  getArrivalTime() {
-    let time = this.arrival_time.text;
+  // type is 'value' or 'text'
+  getArrivalTime(type) {
+    let time = this.arrival_time[type];
     this._formatTime(time);
     return time;
   }
 
-  getDepartureTime() {
-    let time = this.departure_time.text;
+  // type is 'value' or 'text'
+  getDepartureTime(type) {
+    let time = this.departure_time[type];
     this._formatTime(time);
     return time;
   }

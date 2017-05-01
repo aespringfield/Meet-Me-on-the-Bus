@@ -41,6 +41,12 @@ class Trip {
     return this.eta;
   }
 
+  setEtaToLatest() {
+    let latestEta = this.groupManager.findLastIndivEta();
+    this.setEta(latestEta);
+    return this.getEta();
+  }
+
   // clean these two up by combining them and determining which class they should live in
   createDestSearchForm(trip) {
     let address, date, searchForm;
