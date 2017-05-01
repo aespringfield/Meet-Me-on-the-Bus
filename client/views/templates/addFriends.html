@@ -1,6 +1,6 @@
 <div class="container">
   <div ng-repeat="friend in friends.peopleArray">
-    <div>
+    <div ng-click="friends.addOriginFor(friend)">
       <i class="material-icons">mode_edit</i>
       <p>{{friend.getShortName()}}</p>
       <i class="material-icons">clear</i>
@@ -9,4 +9,5 @@
   <div>
     <md-button ng-click="friends.goTo('/newFriend')"><i class="material-icons">add</i></md-button>
   </div>
+    <md-button ng-click="friends.goTo('/indivDetails')">Done adding friends</md-button>
 </div>

@@ -5,8 +5,8 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
   let person = PersonService.findInvitedPerson('mainUser', true);
   let requestRoute = PersonService.requestRoute;
 
-  function goToDetails() {
-    $location.path('/indivDetails');
+  function goToFriends() {
+    $location.path('/addFriends');
   }
 
   originInput.searchForm = trip.createOriginSearchForm(person);
@@ -24,7 +24,7 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
         date: person.origin.earliestDepartTime,
         searchBy: 'departure_time'
       };
-      requestRoute(routeObject, person, goToDetails);
+      requestRoute(routeObject, person, goToFriends);
     });
 
     person.origin.setEarliestDepartTime(date);

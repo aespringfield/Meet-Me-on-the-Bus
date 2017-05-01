@@ -2,6 +2,8 @@
 myApp.factory('PersonService', ['$http', '$location', function($http, $location){
   let mainUser = new MainUser('Lucinda', 'Williams', 'lucinda@lucinda.com');
 
+  userControl = {}
+  userObject = {};
   mainUser.currentTrip.groupManager.invite(mainUser, true, true);
 
   console.log(mainUser);
@@ -9,6 +11,12 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
   let findInvitedPerson = function(keyName, keyValue) {
     return mainUser.currentTrip.groupManager.findPerson(keyName, keyValue);
   };
+
+  // move to utilities?
+  let instantiateMainUser = function(user) {
+    userControl.mainUser = new MainUser(user.firstName, user.lastName, user.username);
+    return mainUser;
+  }
 
   // move to class?
   // origin & destination are formatted addresses
@@ -27,16 +35,31 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
       person.setRoute(directionsObject);
       callback();
     });
-  }
+  };
 
   let getSteps = function(person) {
     return person.route.getSteps();
   }
 
+  let getUser = function(){
+    $http.get('/user').then(function(response) {
+        if(response.data.username) {
+            // user has a curret session on the server
+            userObject.userName = response.data.username;
+            console.log('User Data: ', userObject.userName);
+        } else {
+            // user has no session, bounce them back to the login page
+            $location.path("/home");
+        }
+    });
+  };
+
   return {
+    userObject: userObject,
     mainUser: mainUser,
     findInvitedPerson: findInvitedPerson,
     requestRoute: requestRoute,
-    getSteps: getSteps
+    getSteps: getSteps,
+    getUser: getUser
   };
 }]);

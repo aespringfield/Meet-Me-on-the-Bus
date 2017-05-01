@@ -11,13 +11,13 @@ myApp.config(['$routeProvider', function($routeProvider) {
       templateUrl: '/views/templates/register.html',
       controller: 'LoginController',
     })
-    .when('/user', {
+    .when('/destInput', {
       templateUrl: '/views/templates/destInput.html',
       controller: 'DestInputController',
       controllerAs: 'destInput',
       resolve: {
-        getuser : function(UserService) {
-          return UserService.getuser();
+        getUser : function(PersonService) {
+          return PersonService.getUser();
         }
       }
     })
@@ -26,8 +26,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'OriginInputController',
       controllerAs: 'originInput',
       resolve: {
-        getuser : function(UserService) {
-          return UserService.getuser();
+        getUser : function(PersonService) {
+          return PersonService.getUser();
         }
       }
     })
@@ -36,8 +36,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'IndivDetailsController',
       controllerAs: 'indivDetails',
       resolve: {
-        getuser : function(UserService) {
-          return UserService.getuser();
+        getUser : function(PersonService) {
+          return PersonService.getUser();
         }
       }
     })
@@ -46,8 +46,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'FriendsController',
       controllerAs: 'friends',
       resolve: {
-        getuser : function(UserService) {
-          return UserService.getuser();
+        getUser : function(PersonService) {
+          return PersonService.getUser();
         }
       }
     })
@@ -56,8 +56,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'FriendsController',
       controllerAs: 'friends',
       resolve: {
-        getuser : function(UserService) {
-          return UserService.getuser();
+        getUser : function(PersonService) {
+          return PersonService.getUser();
         }
       }
     })

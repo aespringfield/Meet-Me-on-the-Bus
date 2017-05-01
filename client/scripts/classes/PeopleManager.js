@@ -2,6 +2,7 @@ class PeopleManager {
 
   constructor (peopleArray = []) {
     this.peopleArray = peopleArray;
+    this.focusPerson = undefined;
   }
 
   findPerson(keyName, keyValue) {

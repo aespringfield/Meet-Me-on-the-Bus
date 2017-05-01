@@ -1,5 +1,6 @@
 class TripManager {
-  constructor() {}
+  constructor() {
 
-  
+  }
+
 }
