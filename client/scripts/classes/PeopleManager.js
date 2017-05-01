@@ -25,6 +25,10 @@ class PeopleManager {
     return this.focusPerson;
   }
 
+  getFocusPerson(person) {
+    return this.focusPerson;
+  }
+
   // remove(person)
 
 }

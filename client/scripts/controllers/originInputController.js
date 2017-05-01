@@ -26,7 +26,7 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
         date: person.origin.earliestDepartTime,
         searchBy: 'departure_time'
       };
-      requestRoute(routeObject, person, goToFriends);
+      requestRoute(routeObject, trip, goToFriends);
     });
 
     person.origin.setEarliestDepartTime(date);

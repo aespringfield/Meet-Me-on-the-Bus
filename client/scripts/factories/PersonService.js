@@ -26,7 +26,7 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
   // origin & destination are formatted addresses
   // date is milliseconds since 1/1/1970
   // searchBy is either 'arrival_time' or 'departure_time'
-  let requestRoute = function(routeObject, person, callback) {
+  let requestRoute = function(routeObject, trip, callback) {
     let directionsParams = {
       origin: routeObject.origin,
       destination: routeObject.destination,
@@ -36,7 +36,10 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
     $http.post('/directions/getRoute', directionsParams).then(function(response) {
       let directionsObject = response.data;
       console.log(directionsObject);
+      console.log('trip is', trip);
+      let person = trip.groupManager.getFocusPerson();
       person.setRoute(directionsObject);
+      trip.setEtatoArrivalOf(person);
       callback();
     });
   };
