@@ -41,11 +41,10 @@ class Trip {
     return this.eta;
   }
 
-  // callback function for requestRoute
-  // updates trip ETA from the arrival time of a person
-  setEtatoArrivalOf(person) {
-    this.setEta(person.route.getArrivalTime('value'));
-    console.log(this.getEta());
+  setEtaToLatest() {
+    let latestEta = this.groupManager.findLastIndivEta();
+    this.setEta(latestEta);
+    return this.getEta();
   }
 
   // clean these two up by combining them and determining which class they should live in

@@ -39,7 +39,7 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
       console.log('trip is', trip);
       let person = trip.groupManager.getFocusPerson();
       person.setRoute(directionsObject);
-      trip.setEtatoArrivalOf(person);
+      trip.setEtaToLatest();
       callback();
     });
   };
