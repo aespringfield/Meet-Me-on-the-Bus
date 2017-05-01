@@ -78,7 +78,7 @@ class GroupManager extends PeopleManager {
   // returns an object containing two arrays:
     // respondeeArray : array of people from peopleArray who have responded
     // nonRespondeeArray : array of people from peopleArray who have not responded
-  getPeopleByResponded() {
+  getByResponded() {
     let respondeeArray = [];
     let nonRespondeeArray = [];
     for (let i = 0; i < this.peopleArray.length; i++) {

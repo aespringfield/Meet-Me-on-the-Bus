@@ -20,13 +20,8 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
       let result = response.data.results[0];
       person.origin.setFrom(result);
       console.log(trip);
-      let routeObject = {
-        origin: person.origin.formatted_address,
-        destination: trip.destination.formatted_address,
-        date: person.origin.earliestDepartTime,
-        searchBy: 'departure_time'
-      };
-      requestRoute(routeObject, trip, goToFriends);
+      let directionsParams = trip.createDirectionsParams(person, 'departure_time')
+      requestRoute(directionsParams, trip, goToFriends);
     });
 
     person.origin.setEarliestDepartTime(date);
