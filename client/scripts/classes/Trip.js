@@ -75,6 +75,27 @@ class Trip {
     return searchForm;
   }
 
+  // takes an InvitedPerson and creates an object with the parameters
+  // needed to pass to the server for a Google Maps Directions API request
+  // searchBy is a string -- either 'departure_time' or 'arrival_time'
+  createDirectionsParams(person, searchBy) {
+    let date;
+    if (searchBy === 'departure_time') {
+      date = person.origin.earliestDepartTime;
+    } else if (searchBy === 'arrival_time') {
+      var time = new Date().getTime();
+      date = new Date(this.eta*1000);
+    }
+
+    let directionsParams = {
+      origin: person.origin.formatted_address,
+      destination: this.destination.formatted_address,
+      date: date,
+      searchBy: searchBy
+    };
+    return directionsParams;
+  }
+
   // saveTrip() (creates object with info to store and POSTS to DB)
 
   // calls setEta() to update ETA sends PUT request to DB with updated ETA and group data)

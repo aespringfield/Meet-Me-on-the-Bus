@@ -20,28 +20,40 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
     console.log(userControl.mainUser);
     let invitedMainUser = userControl.mainUser.currentTrip.groupManager.invite(userControl.mainUser, true);
     userControl.mainUser.currentTrip.groupManager.setFocusPerson(invitedMainUser);
-  }
+  };
 
   // move to class?
   // origin & destination are formatted addresses
-  // date is milliseconds since 1/1/1970
+  // date is seconds since 1/1/1970
   // searchBy is either 'arrival_time' or 'departure_time'
-  let requestRoute = function(routeObject, trip, callback) {
-    let directionsParams = {
-      origin: routeObject.origin,
-      destination: routeObject.destination,
-      date: routeObject.date,
-      searchBy: routeObject.searchBy,
-    };
+  let requestRoute = function(directionsParams, trip, callback) {
     $http.post('/directions/getRoute', directionsParams).then(function(response) {
       let directionsObject = response.data;
       console.log(directionsObject);
       console.log('trip is', trip);
       let person = trip.groupManager.getFocusPerson();
       person.setRoute(directionsObject);
+      let oldEta = trip.eta;
       trip.setEtaToLatest();
-      callback();
+      if (oldEta < trip.eta) {
+        let respondees = trip.groupManager.getByResponded().respondeeArray;
+        for (let i = 0; i < respondees.length; i++) {
+          if (respondees[i].route.getArrivalTime('value') < trip.eta) {
+            console.log('later');
+            requestNewRoute(respondees[i], trip);
+          }
+        }
+      }
+      if (callback) {
+        callback();
+      }
     });
+  };
+
+  let requestNewRoute = function(person, trip) {
+    trip.groupManager.setFocusPerson(person);
+    let directionsParams = trip.createDirectionsParams(person, 'arrival_time');
+    requestRoute(directionsParams, trip);
   };
 
   let getSteps = function(person) {
