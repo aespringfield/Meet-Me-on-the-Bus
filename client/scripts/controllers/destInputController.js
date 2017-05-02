@@ -29,4 +29,16 @@ myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'P
 
   destInput.logout = UserService.logout;
 
+  // destInput.sendMail = function() {
+  //   let mailer = {
+  //     toEmail: [PersonService.userControl.mainUser.email],
+  //     subject: 'Hello there!',
+  //     message: 'What\'s new, buddy?',
+  //   };
+  //   console.log("mailer is", mailer);
+  //   $http.post('/mail', mailer).then(function(response) {
+  //     console.log(response);
+  //   });
+  // };
+
 }]);

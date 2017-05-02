@@ -4,3 +4,4 @@ node_modules/
 *.log
 server/public/
 server/modules/apiKey.js
+server/modules/mailPass.js
