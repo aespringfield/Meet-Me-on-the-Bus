@@ -14,6 +14,7 @@ var register = require('./routes/register');
 var geocode = require('./routes/geocode');
 var directions = require('./routes/directions');
 var mail = require('./routes/mail');
+var place = require('./routes/place');
 var group = require('./routes/group');
 
 // Body parser middleware
@@ -43,6 +44,7 @@ app.use('/geocode', geocode);
 app.use('/directions', directions);
 app.use('/mail', mail);
 app.use('/group', group);
+app.use('/place', place);
 app.use('/*', index);
 
 // Mongo Connection //
