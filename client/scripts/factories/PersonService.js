@@ -1,6 +1,7 @@
 // Controls management of user info and friends
-myApp.factory('PersonService', ['$http', '$location', function($http, $location){
-  // let mainUser = new MainUser('Lucinda', 'Williams', 'lucinda@lucinda.com');
+myApp.factory('PersonService', ['$http', '$location', '$route', function($http, $location, $route){
+  let code = {};
+
 
   // make userControl its own class?
   let userObject = {};
@@ -43,6 +44,9 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
             requestNewRoute(respondees[i], trip);
           }
         }
+      } else {
+        console.log('earlier');
+        requestNewRoute(person, trip);
       }
       if (callback) {
         callback();
@@ -53,7 +57,12 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
   let requestNewRoute = function(person, trip) {
     trip.groupManager.setFocusPerson(person);
     let directionsParams = trip.createDirectionsParams(person, 'arrival_time');
-    requestRoute(directionsParams, trip);
+    $http.post('/directions/getRoute', directionsParams).then(function(response) {
+      let directionsObject = response.data;
+      person.setRoute(directionsObject);
+      console.log(directionsObject);
+      console.log('trip is', trip);
+    })
   };
 
   let getSteps = function(person) {
@@ -65,23 +74,40 @@ myApp.factory('PersonService', ['$http', '$location', function($http, $location)
         if(response.data.username) {
             // user has a current session on the server
             userObject.userName = response.data.username;
+            userObject.id = response.data._id;
+            console.log('User Data: ', userObject.userName);
             if (callback) {
               callback(response);
             }
         } else {
+            // store the activation code for later use
+            code.tempCode = $route.current.params.code;
+            console.log('Activation code: ', $route.current.params.code);
             // user has no session, bounce them back to the login page
             $location.path('/home');
         }
     });
   };
 
+  let logout = function() {
+    $http.get('/user/logout').then(function(response) {
+      console.log('logged out');
+      userObject.name = '';
+      userObject.id = '';
+      PersonService.code.tempCode = undefined;
+      $location.path('/home');
+    })
+  };
+
   return {
+    code: code,
     userObject: userObject,
     userControl: userControl,
     findInvitedPerson: findInvitedPerson,
     requestRoute: requestRoute,
     getSteps: getSteps,
     getUser: getUser,
-    instantiateMainUser: instantiateMainUser
+    instantiateMainUser: instantiateMainUser,
+    logout: logout
   };
 }]);

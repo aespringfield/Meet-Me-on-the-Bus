@@ -1,7 +1,7 @@
 myApp.controller('IndivDetailsController', ['UserService', 'PersonService', 'moment', function (UserService, PersonService, moment) {
 
   let indivDetails = this;
-  let person = PersonService.findInvitedPerson('mainUser', true);
+  let person = PersonService.userControl.mainUser.currentTrip.groupManager.focusPerson;
   indivDetails.route = person.route;
   indivDetails.steps = PersonService.getSteps(person);
 
