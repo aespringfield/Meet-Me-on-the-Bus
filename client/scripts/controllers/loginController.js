@@ -18,7 +18,13 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
             // location works with SPA (ng-route)
             console.log('redirecting to destination input page');
             PersonService.getUser(PersonService.instantiateMainUser);
-            $location.path('/destInput');
+            if(PersonService.code.tempCode !== undefined) {
+              // Do we have an activation code?
+              $location.path('/activate/' + PersonService.code.tempCode);
+            } else {
+              // location works with SPA (ng-route)
+              $location.path('/destInput');
+            }
           } else {
             console.log('failure: ', response);
             $scope.message = "Wrong!!";
@@ -34,7 +40,13 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
         console.log('sending to server...', $scope.user);
         $http.post('/register', $scope.user).then(function(response) {
           console.log('success');
-          $location.path('/home');
+          if(PersonService.code.tempCode != undefined) {
+            // Do we have an activation code?
+            $location.path('/activate/' + PersonService.code.tempCode);
+          } else {
+            // location works with SPA (ng-route)
+            $location.path('/destInput');
+          }
         },
         function(response) {
           console.log('error');

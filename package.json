@@ -21,6 +21,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.3",
     "bootstrap": "^3.3.5",
+    "chance": "^1.0.8",
     "express": "^4.13.1",
     "express-session": "^1.13.0",
     "googlemaps": "^1.12.0",

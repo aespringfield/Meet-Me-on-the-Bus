@@ -1,8 +1,9 @@
-myApp.factory('UserService', ['$http', '$location', 'PersonService', function($http, $location, PersonService){
+myApp.factory('UserService', ['$http', '$location', '$route', 'PersonService', function($http, $location, $route, PersonService){
   console.log('User Service Loaded');
 
   // this will ultimately be deleted
   let userObject = {};
+
 
 
   return {

@@ -64,15 +64,30 @@ class GroupManager extends PeopleManager {
   // returns the ETA of the individual who is currently scheduled to arrive last
   findLastIndivEta() {
     let latestEta = this.focusPerson.route.getArrivalTime('value');
-    if (this.peopleArray.length < 1) {
+    console.log("eta is", latestEta);
+    if (this.peopleArray.length > 1) {
       for (let i = 0; i < this.peopleArray.length; i++) {
-        let currentEta = this.peopleArray[i];
+        let currentEta = this.peopleArray[i].route.getArrivalTime('value');
+        console.log(this.peopleArray[i].firstName +'\'s arrival time is ' + currentEta);
         if (currentEta > latestEta) {
           latestEta = currentEta;
+          console.log('oop! that\'s later');
         }
       }
     }
     return latestEta;
+  }
+
+  // returns an array of users who are not the main user
+  getSubUsers() {
+    let subUsers = [];
+    for (let i = 0; i < this.peopleArray.length; i++) {
+      let person = this.peopleArray[i];
+      if (person.mainUser === false) {
+        subUsers.push(person);
+      }
+    }
+    return subUsers;
   }
 
   // returns an object containing two arrays:

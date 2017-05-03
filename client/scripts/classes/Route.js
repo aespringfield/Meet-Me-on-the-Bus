@@ -38,14 +38,18 @@ class Route {
   // type is 'value' or 'text'
   getArrivalTime(type) {
     let time = this.arrival_time[type];
-    this._formatTime(time);
+    //this._formatTime(time);
+    time = new Date(time*1000)
+    // time = moment(time);
     return time;
   }
 
   // type is 'value' or 'text'
   getDepartureTime(type) {
     let time = this.departure_time[type];
-    this._formatTime(time);
+    // this._formatTime(time);
+    time = new Date(time*1000)
+    // time = moment(time);
     return time;
   }
 
