@@ -83,8 +83,7 @@ class Trip {
     if (searchBy === 'departure_time') {
       date = person.origin.earliestDepartTime;
     } else if (searchBy === 'arrival_time') {
-      var time = new Date().getTime();
-      date = new Date(this.eta*1000);
+      date = this.eta;
     }
 
     let directionsParams = {

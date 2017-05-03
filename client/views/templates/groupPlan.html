@@ -1,0 +1,9 @@
+<div class="container">
+  <div>
+    <p>Your group will arrive at {{groupPlan.destination}} at <b>{{groupPlan.eta}}</b></p>
+  </div>
+  <div ng-repeat="groupMember in groupPlan.group">
+    <md-button ng-click="groupPlan.viewRouteDetails(groupMember)">{{groupMember.firstName}}'s route</md-button>
+  </div>
+  <md-button ng-click="groupPlan.sendToFriends()">Send to Friends</md-button>
+</div>

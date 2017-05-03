@@ -16,9 +16,9 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'DestInputController',
       controllerAs: 'destInput',
       resolve: {
-        getUser : function(PersonService) {
+        getUser : ['PersonService', function(PersonService){
           return PersonService.getUser();
-        }
+        }]
       }
     })
     .when('/originInput', {
@@ -26,9 +26,9 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'OriginInputController',
       controllerAs: 'originInput',
       resolve: {
-        getUser : function(PersonService) {
+        getUser : ['PersonService', function(PersonService){
           return PersonService.getUser();
-        }
+        }]
       }
     })
     .when('/indivDetails', {
@@ -36,9 +36,9 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'IndivDetailsController',
       controllerAs: 'indivDetails',
       resolve: {
-        getUser : function(PersonService) {
+        getUser : ['PersonService', function(PersonService){
           return PersonService.getUser();
-        }
+        }]
       }
     })
     .when('/addFriends', {
@@ -46,9 +46,9 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'FriendsController',
       controllerAs: 'friends',
       resolve: {
-        getUser : function(PersonService) {
+        getUser : ['PersonService', function(PersonService){
           return PersonService.getUser();
-        }
+        }]
       }
     })
     .when('/newFriend', {
@@ -56,9 +56,29 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'FriendsController',
       controllerAs: 'friends',
       resolve: {
-        getUser : function(PersonService) {
+        getUser : ['PersonService', function(PersonService){
           return PersonService.getUser();
-        }
+        }]
+      }
+    })
+    .when('/groupPlan', {
+      templateUrl: '/views/templates/groupPlan.html',
+      controller: 'GroupPlanController',
+      controllerAs: 'groupPlan',
+      resolve: {
+        getUser : ['PersonService', function(PersonService){
+          return PersonService.getUser();
+        }]
+      }
+    })
+    // Accept a route with an activation code as a parameter
+    .when('/activate/:code', {
+      templateUrl: '/views/templates/activate.html',
+      controller: 'ActivateController',
+      resolve: {
+        getUser : ['PersonService', function(PersonService){
+          return PersonService.getUser();
+        }]
       }
     })
     .otherwise({
