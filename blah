@@ -1,0 +1,36 @@
+let instructionsString = ''
+for (let i = 0; i < steps.length; i++) {
+  if (i > 0) {
+    instructionsString += '\n\n';
+  }
+  if (step.getMode() === 'TRANSIT') {
+    instructionsString += 'Take the ' + step.getRouteName() + '\n';
+    instructionsString += 'Depart at: ' + step.getDepartureTime() + '\n';
+    instructionsString += 'Leave from: ' + step.getDepartureStop() + '\n';
+    instructionsString += '\n';
+    instructionsString += 'Arrive at: ' + step.getArrivalTime() + '\n';
+    instructionsString += 'Get off at: ' + step.getArrivalStop();
+  } else if (step.getMode() === 'WALKING') {
+    instructionsString += step.getInstructions() + ' (' + step.getDuration('text') + ')';
+  }
+  return instructionsString;
+}
+
+  <md-content ng-show="step.getMode() === 'TRANSIT'">
+    <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
+    <div>
+      <div><b>{{step.getRouteName()}}</b></div>
+      <div><b>{{step.getDepartureTime()}}</b></div>
+      <div><b>Leave from </b>{{step.getDepartureStop()}}</div>
+    </div>
+    <div>
+      <div><b>{{step.getArrivalTime()}}</b></div>
+      <div><b>Arrive at </b>{{step.getArrivalStop()}}</div>
+    </div>
+  </md-content>
+  <md-content ng-show="step.getMode() === 'WALKING'">
+    <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
+    <div>
+      <div><b>{{step.getDuration('text')}}</b></div>
+      <div>{{step.getInstructions()}}</div>
+    </div>

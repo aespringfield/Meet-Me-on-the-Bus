@@ -1,6 +1,6 @@
 <div class="container">
   <div>
-    <h2><b>Leave at </b>{{indivDetails.route.getDepartureTime()}}</h2>
+    <h2><b>Leave at </b>{{indivDetails.route.getDepartureTime('text')}}</h2>
   </div>
   <div ng-repeat="step in indivDetails.steps">
     <md-content ng-show="step.getMode() === 'TRANSIT'">
@@ -23,5 +23,5 @@
       </div>
     </md-content>
   </div>
-      <h2><b>Arrive at </b>{{indivDetails.route.getArrivalTime()}}</h2>
+      <h2><b>Arrive at </b>{{indivDetails.route.getArrivalTime('text')}}</h2>
 </div>

@@ -40,13 +40,13 @@ class TransitStep extends Step {
 
   getDepartureTime() {
     let time = this.departure_time;
-    this._formatTime(time);
+    time = this._formatTime(time);
     return time;
   }
 
   getArrivalTime() {
     let time = this.arrival_time;
-    this._formatTime(time);
+    time = this._formatTime(time);
     return time;
   }
 
@@ -64,7 +64,7 @@ class TransitStep extends Step {
 
   getRouteName() {
     let routeName = this.short_name;
-    if (this.vehicle = 'Light rail') {
+    if (this.vehicle === 'Light rail') {
       routeName = routeName + ' Line';
     }
     return routeName;

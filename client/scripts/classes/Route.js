@@ -23,7 +23,7 @@ class Route {
   }
 
   _formatTime(time) {
-    time = moment(time, 'h:mma').format('h:mm a');
+    time = moment(time).format('h:mm a');
     return time;
   }
 
@@ -37,19 +37,21 @@ class Route {
 
   // type is 'value' or 'text'
   getArrivalTime(type) {
-    let time = this.arrival_time[type];
-    //this._formatTime(time);
+    let time = this.arrival_time.value;
     time = new Date(time*1000)
-    // time = moment(time);
+    if (type === 'text') {
+      time = this._formatTime(time);
+    }
     return time;
   }
 
   // type is 'value' or 'text'
   getDepartureTime(type) {
-    let time = this.departure_time[type];
-    // this._formatTime(time);
+    let time = this.departure_time.value;
     time = new Date(time*1000)
-    // time = moment(time);
+    if (type === 'text') {
+      time = this._formatTime(time);
+    }
     return time;
   }
 

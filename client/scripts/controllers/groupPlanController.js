@@ -23,11 +23,24 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
   };
 
   let getInstructionsString = function(steps) {
-    let instructionsString = steps[0].html_instructions;
-    for (let i = 1; i < steps.length; i++) {
-      instructionsString += '\n ' + steps[i].html_instructions;
+    let instructionsString = ''
+    for (let i = 0; i < steps.length; i++) {
+      let step = steps[i];
+      if (i > 0) {
+        instructionsString += '\n\n';
+      }
+      if (step.getMode() === 'TRANSIT') {
+        instructionsString += 'Take the ' + step.getRouteName() + '\n';
+        instructionsString += 'Depart at: ' + step.getDepartureTime() + '\n';
+        instructionsString += 'Leave from: ' + step.getDepartureStop() + '\n';
+        instructionsString += '\n';
+        instructionsString += 'Arrive at: ' + step.getArrivalTime() + '\n';
+        instructionsString += 'Get off at: ' + step.getArrivalStop();
+      } else if (step.getMode() === 'WALKING') {
+        instructionsString += step.getInstructions() + ' (' + step.getDuration('text') + ')';
+      }
+      return instructionsString;
     }
-    return instructionsString;
   }
 
   let sendMail = function(friend) {
