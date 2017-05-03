@@ -1,4 +1,4 @@
-myApp.controller('GroupPlanController', ['$http', 'PersonService', 'moment', function ($http, PersonService, moment) {
+myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 'moment', function ($http, $location, PersonService, moment) {
   let groupPlan = this;
   let mainUser = PersonService.userControl.mainUser;
   let trip = mainUser.currentTrip;
@@ -15,6 +15,11 @@ myApp.controller('GroupPlanController', ['$http', 'PersonService', 'moment', fun
     for (let i = 0; i < subUsers.length; i++) {
       sendMail(subUsers[i]);
     }
+  };
+
+  groupPlan.viewRouteDetails = function(person) {
+    groupManager.setFocusPerson(person);
+    $location.path('/indivDetails');
   };
 
   let getInstructionsString = function(steps) {
