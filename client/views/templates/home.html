@@ -6,11 +6,13 @@
     </div>
     <form>
       <div layout="column" layout-align="center center">
-        <md-content>
-          <p class="warn-error" role="alert" ng-if="message != ''">
-            <md-icon class="warn-icon material-icons">error</md-icon>
-            {{message}}
-          </p>
+        <md-content class="warn-error" layout="row" layout-align="center center" ng-if="message != ''">
+        <div>
+            <i class="warn-icon material-icons">error</i>
+        </div>
+        <div>
+            <p>{{message}}</p>
+          </div>
         </md-content>
       <div>
         <md-input-container >

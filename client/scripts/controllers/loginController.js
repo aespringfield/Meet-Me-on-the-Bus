@@ -27,7 +27,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
             }
           } else {
             console.log('failure: ', response);
-            $scope.message = "Wrong!!";
+            $scope.message = "Invalid username and/or password";
           }
         });
       }

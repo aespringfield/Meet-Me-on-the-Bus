@@ -41,6 +41,7 @@
 .logo {
   font-family: 'Pacifico', cursive;
   font-size: 64px;
+  text-align: center;
 }
 
 .material-icons {
@@ -112,7 +113,6 @@
   height: 75px;
   width:  140px;
 }
-
 
 
 /*h1 {
