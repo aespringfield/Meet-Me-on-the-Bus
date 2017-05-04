@@ -6,8 +6,13 @@
       <i class="material-icons">clear</i>
     </div>
   </div>
-  <div>
-    <md-button ng-click="friends.goTo('/newFriend')"><i class="material-icons">add</i></md-button>
-  </div>
-    <md-button ng-click="friends.goTo('/groupPlan')">Done adding friends</md-button>
+  <div layout="row" layout-align="center center">
+  <md-button flex="80" class="md-primary" ng-click="friends.goTo('/newFriend')">
+    <md-icon class="material-icons md-48">add</md-icon>
+  </md-button>
+
+</div>
+<div layout="row" layout-align="center center">
+  <md-button flex="80" class="md-primary" ng-click="friends.goTo('/groupPlan')">Done adding friends</md-button>
+</div>
 </div>

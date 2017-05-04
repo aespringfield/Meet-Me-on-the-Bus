@@ -14,7 +14,9 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
   originInput.searchForm = trip.createOriginSearchForm(person);
 
   // would like to add this function to a class (SearchForm? InvitedPerson? Origin?)
-  originInput.setOrigin = function(address, date) {
+  originInput.setOrigin = function() {
+    let address = originInput.searchForm.address;
+    let date = originInput.searchForm.date;
     let addressObject = {address: address};
     $http.post('/geocode/search', addressObject).then(function(response) {
       let result = response.data.results[0];

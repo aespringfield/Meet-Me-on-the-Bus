@@ -1,32 +1,34 @@
 <div class="container">
-  <form class="destinationForm" ng-submit="destInput.setTripInfo(destInput.searchForm.address, destInput.searchForm.date)">
-    <div layout="row">
+  <form class="destinationForm">
+      <div layout="row" layout-align="center center">
       <div class="">
-      <md-input-container>
-        <label for="destinationInput">Where are you going?</label>
-        <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Destination">
+      <md-input-container flex="80" class="salmon" ng-focus="destInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
+        <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Where are you going?">
       </md-input-container>
     </div>
     </div>
-    <div class="center">
-    <div layout="row">
-      <div layout="column">
-        <div flex class="center">
-          <md-content>
+        <div layout="column" layout-align="center center">
+              <div flex="80" class="darkseagreen">
+    <div layout="row" layout-align="center center">
+
+      <div layout="column" layout-align="center center">
+        <div >
+          <md-content class="blanchedalmond">
               <mdp-time-picker ng-model="destInput.searchForm.date"></mdp-time-picker>
             </md-content>
         </div>
       </div>
-      <div flex>
-        <md-content>
-          <div>
+      <div>
+          <md-content class="chartreuse">
             <mdp-date-picker ng-model="destInput.searchForm.date" ng-change="destInput.log(destInput.date)" md-placeholder="Enter date"></mdp-date-picker>
-          </div>
         </md-content>
       </div>
     </div>
   </div>
-    <input type="submit" value="Submit"></input>
+    <md-button class="md-primary" ng-click="destInput.setTripInfo()">
+      <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
+    </md-button>
 
   </form>
+</div>
 </div>

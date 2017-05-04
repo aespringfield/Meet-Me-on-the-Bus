@@ -39,12 +39,48 @@
 }*/
 
 .container{
-    padding : 20px;
+  padding : 20px;
+  font-size: 22px;
+  min-height: 100%;
+}
+
+.picker {
+  font-size: 16px;
+  min-width: 150px;
+}
+
+.location-input{
+  width: 800px;
+}
+
+.full {
+  height:100%
 }
 
 .center {
   margin: 0 auto;
 }
+
+.salmon {
+  background-color: salmon;
+}
+
+.blanchedalmond {
+  background-color: blanchedalmond;
+}
+
+.chartreuse {
+  background-color: chartreuse;
+}
+
+.darkseagreen {
+  background-color: darkseagreen;
+}
+
+.block {
+  display: inline-block;
+}
+
 
 
 /*h1 {

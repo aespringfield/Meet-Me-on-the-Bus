@@ -28,4 +28,21 @@ var config = {
 
 var googleMapsAPI = new GoogleMapsAPI(config);
 
+
+router.get('/:place_id', function(req, res) {
+  console.log(req.params);
+  var place_id = req.params.place_id;
+  var placeParams = {
+    'placeid': place_id,
+    'language': 'en'
+  }
+  googleMapsAPI.placeDetails(placeParams, function(err, result) {
+    if (err) {
+      console.log(err);
+    }
+    console.log(result);
+    res.send(result);
+  })
+});
+
 module.exports = router;

@@ -8,9 +8,14 @@ myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'P
   destInput.searchForm = destInput.trip.createDestSearchForm(destInput.trip);
 
   // would like to add the 3 functions below to SearchForm class
-  destInput.setTripInfo = function(address, date) {
-    setDestination(address);
-    setDesiredEta(date);
+  destInput.setTripInfo = function() {
+    let address = destInput.searchForm.address;
+    let date = destInput.searchForm.date;
+    let validInput = destInput.searchForm.checkInput(address, date);
+    if (validInput) {
+      setDestination(address);
+      setDesiredEta(date);
+    }
   };
 
   let setDestination = function(address) {
@@ -20,6 +25,8 @@ myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'P
       destInput.trip.setDestination(result);
       console.log(destInput.trip);
       $location.path('/originInput');
+    }, function(error) {
+      console.log(error);
     });
   };
 

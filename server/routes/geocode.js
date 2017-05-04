@@ -38,6 +38,9 @@ router.post('/search', function(req, res) {
     'region': 'us'
   };
   googleMapsAPI.geocode(geocodeParams, function(err, result) {
+    if (err) {
+      console.log(err);
+    }
     console.log(result);
     res.send(result);
   });
