@@ -1,34 +1,42 @@
 <div class="container">
-  <form class="destinationForm">
-      <div layout="row" layout-align="center center">
-      <div class="">
-      <md-input-container flex="80" class="salmon" ng-focus="destInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
-        <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Where are you going?">
-      </md-input-container>
-    </div>
-    </div>
-        <div layout="column" layout-align="center center">
-              <div flex="80" class="darkseagreen">
-    <div layout="row" layout-align="center center">
-
-      <div layout="column" layout-align="center center">
-        <div >
-          <md-content class="blanchedalmond">
-              <mdp-time-picker ng-model="destInput.searchForm.date"></mdp-time-picker>
-            </md-content>
-        </div>
-      </div>
-      <div>
-          <md-content class="chartreuse">
-            <mdp-date-picker ng-model="destInput.searchForm.date" ng-change="destInput.log(destInput.date)" md-placeholder="Enter date"></mdp-date-picker>
-        </md-content>
-      </div>
-    </div>
+  <div class="header-bar">
   </div>
+  <div class="main-view"
+  <form class="destinationForm">
+    <div layout="row" layout-align="center center">
+      <div class="">
+        <md-input-container layout="column" layout-align="center center" ng-focus="destInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
+          <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Destination">
+        </md-input-container>
+      </div>
+    </div>
+    <div layout="column" layout-align="center center">
+      <div layout="row" layout-align="center center">
+        <div flex>
+          <md-content class="time-picker picker">
+              <mdp-time-picker ng-model="destInput.searchForm.date"></mdp-time-picker>
+          </md-content>
+
+        </div>
+        <div flex>
+          <md-content class="date-picker picker" layout="row" layout-align="center center" flex>
+            <md-datepicker ng-model="destInput.searchForm.date"></md-datepicker>
+          </md-content>
+        </div>
+
+
+      </div>
+    </div>
+
     <md-button class="md-primary" ng-click="destInput.setTripInfo()">
       <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
     </md-button>
-
   </form>
+
+  <md-content class="time-picker picker">
+      <md-time-picker ng-model="destInput.searchForm.date"></md-time-picker>
+  </md-content>
+
+
 </div>
 </div>

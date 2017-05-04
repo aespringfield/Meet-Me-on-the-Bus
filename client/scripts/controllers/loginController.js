@@ -55,5 +55,9 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
       }
     };
 
+    $scope.goTo = function(file) {
+      $location.path(file);
+    };
+
 
 }]);

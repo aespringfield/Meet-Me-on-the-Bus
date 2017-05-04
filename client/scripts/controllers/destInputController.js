@@ -1,4 +1,4 @@
-myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
+myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, $mdpTimePicker, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let destInput = this;
 
   destInput.trip = PersonService.userControl.mainUser.currentTrip;
@@ -33,6 +33,11 @@ myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'P
   let setDesiredEta = function(date) {
     destInput.trip.setDesiredEta(date);
   };
+
+  let convertToMoment = function(date) {
+    let newMoment = moment(date).format('llll');
+    return newMoment;
+  }
 
   destInput.logout = UserService.logout;
 
