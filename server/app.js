@@ -16,7 +16,7 @@ var directions = require('./routes/directions');
 var mail = require('./routes/mail');
 var place = require('./routes/place');
 var group = require('./routes/group');
-var MLAB_PASS = require('./modules/mlabPass');
+// var MLAB_PASS = require('./modules/mlabPass');
 
 // Body parser middleware
 app.use(bodyParser.json());
