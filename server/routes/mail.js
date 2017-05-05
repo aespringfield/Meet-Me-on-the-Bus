@@ -30,7 +30,6 @@ var transporter = nodemailer.createTransport({
 
 router.post('/', function(req, res) {
   var mailer = req.body;
-  console.log(mailer);
 
   var mailOptions = {
     from: '"Meet Me Mailer", meetmemailer@gmail.com',

@@ -6,15 +6,12 @@ var GoogleMapsAPI = require('googlemaps');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
-  console.log('get /user route');
   // check if logged in
   if(req.isAuthenticated()) {
     // send back user object from database
-    console.log('logged in');
     res.send(req.user);
   } else {
     // failure best handled on the server. do redirect here.
-    console.log('not logged in');
     // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
     res.send(false);
   }
@@ -49,7 +46,6 @@ router.post('/getRoute', function(req, res) {
     if(err) {
       console.log(err);
     }
-    console.log(result);
     res.send(result);
   });
 });

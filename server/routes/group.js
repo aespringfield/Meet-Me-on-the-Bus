@@ -21,7 +21,6 @@ router.get('/', function(req, res) {
           console.log(err);
           res.sendStatus(500);
         }
-        console.log(groups);
         res.send(groups);
     });
   }
