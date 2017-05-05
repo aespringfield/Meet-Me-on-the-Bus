@@ -5,6 +5,13 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
   let person = trip.groupManager.focusPerson;
   let requestRoute = PersonService.requestRoute;
 
+  // this doesn't work for all addresses--pull from places?
+  let address_components = trip.destination.address_components;
+  let street_address = address_components[0].short_name + ' ' + address_components[1].short_name;
+  let city = address_components[3].long_name;
+
+  originInput.destination = street_address + ', ' + city;
+
   console.log("person is", person);
 
   function goToFriends() {
@@ -22,7 +29,7 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
       let result = response.data.results[0];
       person.origin.setFrom(result);
       console.log(trip);
-      let directionsParams = trip.createDirectionsParams(person, 'departure_time')
+      let directionsParams = trip.createDirectionsParams(person, 'departure_time');
       requestRoute(directionsParams, trip, goToFriends);
     });
 

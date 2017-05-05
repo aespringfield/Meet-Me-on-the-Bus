@@ -1,9 +1,18 @@
 <div class="container">
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>Group plan<h1>
+  </div>
+  <div class="main-view">
   <div>
     <p>Your group will arrive at {{groupPlan.destination}} at <b>{{groupPlan.eta}}</b></p>
   </div>
   <div ng-repeat="groupMember in groupPlan.group">
-    <md-button ng-click="groupPlan.viewRouteDetails(groupMember)">{{groupMember.firstName}}'s route</md-button>
+    <div layout="row" layout-align="center center">
+      <md-button flex="80" class="md-raised" ng-click="groupPlan.viewRouteDetails(groupMember)">{{groupMember.firstName}}'s route</md-button>
+    </div>
   </div>
-  <md-button ng-click="groupPlan.sendToFriends()">Send to Friends</md-button>
+  <div layout="row" layout-align="center center">
+    <md-button flex="80" class="md-primary md-raised" ng-click="groupPlan.sendToFriends()">Send to Friends</md-button>
+  </div>
+</div>
 </div>

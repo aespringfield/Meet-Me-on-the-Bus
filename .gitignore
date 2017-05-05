@@ -5,3 +5,4 @@ node_modules/
 server/public/
 server/modules/apiKey.js
 server/modules/mailPass.js
+server/modules/mlabPass.js

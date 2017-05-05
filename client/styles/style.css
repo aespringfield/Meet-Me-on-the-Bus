@@ -60,15 +60,18 @@
 }
 
 .header-bar {
-  background-color: black;
+  background-color: darkseagreen;
   height: 100px;
-  color: linen;
-  opacity: 0.5;
+  color: white;
+  /*opacity: 0.5;*/
+  font-family: 'Varela Round', sans-serif;
+  /*font-family: 'Pacifico', cursive;*/
+  font-size: 20px;
 }
 
 .main-view{
   padding : 20px;
-  font-size: 22px;
+  font-size: 20px;
   min-height: 100%;
   /*font-family: 'Varela Round', sans-serif;*/
 }
@@ -115,6 +118,36 @@
   width:  140px;
 }
 
+.friend-card:hover {
+  cursor: pointer;
+}
+
+.card {
+  background-color: #FAFAFA;
+  color: darkseagreen;
+  /*font-family: 'Varela Round', sans-serif;*/
+  fill: darkseagreen;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.plus-button {
+  fill: #FFC107;
+}
+
+.button-container {
+  padding: 0;
+  margin: 0;
+  width: 100%
+}
+
+.new-friend {
+  padding: 10px 0 10px 0;
+}
+
+/*.step .card {
+  padding: 10px;
+}*/
 
 /*h1 {
   color: salmon;

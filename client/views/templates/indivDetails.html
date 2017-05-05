@@ -1,27 +1,55 @@
 <div class="container">
-  <div>
-    <h2><b>Leave at </b>{{indivDetails.route.getDepartureTime('text')}}</h2>
-  </div>
-  <div ng-repeat="step in indivDetails.steps">
-    <md-content ng-show="step.getMode() === 'TRANSIT'">
-      <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
-      <div>
-        <div><b>{{step.getRouteName()}}</b></div>
-        <div><b>{{step.getDepartureTime()}}</b></div>
-        <div><b>Leave from </b>{{step.getDepartureStop()}}</div>
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>{{indivDetails.firstName}}'s route<h1>
+    </div>
+    <div class="main-view">
+      <div layout="row" layout-align="center center">
+        <h2><b>Leave at </b>{{indivDetails.route.getDepartureTime('text')}}</h2>
       </div>
-      <div>
-        <div><b>{{step.getArrivalTime()}}</b></div>
-        <div><b>Arrive at </b>{{step.getArrivalStop()}}</div>
+
+
+      <div layout="row" layout-align="center center" ng-repeat="step in indivDetails.steps" >
+        <md-card flex="90" class="step card">
+          <md-content ng-show="step.getMode() === 'TRANSIT'">
+            <div layout="row" layout-align="start center">
+              <div>
+                <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
+              </div>
+              <div>
+                <div><b>{{step.getRouteName()}}</b></div>
+              </div>
+            </div>
+            <div>
+              <div><b>{{step.getDepartureTime()}}</b></div>
+              <div><b>Leave from </b>{{step.getDepartureStop()}}</div>
+            </div>
+            <div>
+              <div><b>{{step.getArrivalTime()}}</b></div>
+              <div><b>Arrive at </b>{{step.getArrivalStop()}}</div>
+            </div>
+
+          </md-content>
+
+          <md-content ng-show="step.getMode() === 'WALKING'">
+            <div layout="row" layout-align="start center">
+              <div>
+                <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
+              </div>
+              <div>
+                <div><b>{{step.getDuration('text')}}</b></div>
+              </div>
+            </div>
+            <div>
+              <div>{{step.getInstructions()}}</div>
+            </div>
+
+          </md-content>
+
+
+        </md-card>
       </div>
-    </md-content>
-    <md-content ng-show="step.getMode() === 'WALKING'">
-      <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
-      <div>
-        <div><b>{{step.getDuration('text')}}</b></div>
-        <div>{{step.getInstructions()}}</div>
-      </div>
-    </md-content>
-  </div>
+    <div layout="row" layout-align="center center">
       <h2><b>Arrive at </b>{{indivDetails.route.getArrivalTime('text')}}</h2>
-</div>
+    </div>
+    </div>
+  </div>

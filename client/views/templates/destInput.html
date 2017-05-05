@@ -1,5 +1,6 @@
 <div class="container">
-  <div class="header-bar">
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>Destination<h1>
   </div>
   <div class="main-view">
     <div layout="column" layout-align="center center"  ng-if="destInput.searchForm.errorMessage != ''">
@@ -17,7 +18,7 @@
     <div layout="row" layout-align="center center">
       <div class="">
         <md-input-container layout="column" layout-align="center center" ng-focus="destInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
-          <label for="destInput">Destination</label>
+          <label for="destInput">Going to...</label>
           <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="">
         </md-input-container>
       </div>
@@ -39,9 +40,11 @@
       </div>
     </div>
 
-    <md-button class="md-primary" ng-click="destInput.setInfoAndAdvance()">
-      <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
-    </md-button>
+    <div layout="row" layout-align="center center">
+      <md-button flex="80" class="md-primary md-raised" ng-click="destInput.setInfoAndAdvance()">
+        <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
+      </md-button>
+    </div>
   </form>
 </div>
 </div>
