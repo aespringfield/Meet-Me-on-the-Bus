@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var API_KEY = require('../modules/apiKey');
+// var API_KEY = require('../modules/apiKey');
 var GoogleMapsAPI = require('googlemaps');
 
 // Handles Ajax request for user information if user is authenticated
@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 });
 
 var gmAPIconfig = {
-  key: API_KEY,
+  key: process.env.GM_API_KEY || API_KEY,
   encode_polylines: false,
   secure: true
 };

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var nodemailer = require('nodemailer');
-var MAIL_PASS = require('../modules/mailPass');
+// var MAIL_PASS = require('../modules/mailPass');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
@@ -24,7 +24,7 @@ var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'meetmemailer@gmail.com',
-        pass: MAIL_PASS
+        pass: process.env.MAIL_PASS || MAIL_PASS
     }
 });
 
