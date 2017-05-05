@@ -1,31 +1,30 @@
-myApp.controller('DestInputController', ['$http', '$location', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
+myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker', 'UserService', 'PersonService', 'moment', '$mdpDatePicker', '$mdpTimePicker', function ($http, $location, $mdpTimePicker, UserService, PersonService, moment, $mdpDatePicker, mdpTimePicker) {
   let destInput = this;
 
-  destInput.trip = PersonService.userControl.mainUser.currentTrip;
+  let trip = PersonService.userControl.mainUser.currentTrip;
 
-  console.log('in dest. trip is', destInput.trip);
+  console.log('in dest. trip is', trip);
 
-  destInput.searchForm = destInput.trip.createDestSearchForm(destInput.trip);
+  destInput.searchForm = trip.createDestSearchForm(trip);
+  let setTripInfo = PersonService.setTripInfo;
+  let goTo = PersonService.goTo;
 
   // would like to add the 3 functions below to SearchForm class
-  destInput.setTripInfo = function(address, date) {
-    setDestination(address);
-    setDesiredEta(date);
+  destInput.setTripInfo = function() {
+    let address = destInput.searchForm.address;
+    let date = destInput.searchForm.date;
+    let validInput = destInput.searchForm.checkInput(address, date);
+    if (validInput) {
+      destInput.searchForm.clearErrorMessage();
+      setDestination(address);
+      setDesiredEta(date);
+    }
   };
 
-  let setDestination = function(address) {
-    let addressObject = {address: address};
-    $http.post('/geocode/search', addressObject).then(function(response) {
-      let result = response.data.results[0];
-      destInput.trip.setDestination(result);
-      console.log(destInput.trip);
-      $location.path('/originInput');
-    });
+  destInput.setInfoAndAdvance = function() {
+    setTripInfo(destInput.searchForm, '/originInput');
   };
 
-  let setDesiredEta = function(date) {
-    destInput.trip.setDesiredEta(date);
-  };
 
   destInput.logout = UserService.logout;
 

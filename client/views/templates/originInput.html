@@ -1,31 +1,42 @@
 <div class="container">
-  <form class="originForm" ng-submit="originInput.setOrigin(originInput.searchForm.address, originInput.searchForm.date)">
-    <div layout="row">
-      <div class="">
-      <md-input-container>
-        <label for="originInput">Where are you coming from?</label>
-        <input type="text" id="originInput" ng-model="originInput.searchForm.address" name="" value="" placeholder="Origin">
-      </md-input-container>
-    </div>
-    </div>
-    <div class="center">
-    <div layout="row">
-      <div layout="column">
-        <div flex class="center">
-          <md-content>
-              <mdp-time-picker ng-model="originInput.searchForm.date"></mdp-time-picker>
-            </md-content>
-        </div>
-      </div>
-      <div flex>
-        <md-content>
-          <div>
-            <mdp-date-picker ng-model="originInput.searchForm.date" md-placeholder="Enter date"></mdp-date-picker>
-          </div>
-        </md-content>
-      </div>
-    </div>
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>Origin<h1>
   </div>
-    <input type="submit" value="Submit"></input>
-  </form>
+  <div class="main-view">
+  <form class="originForm">
+    <div layout="row" layout-align="center center">
+      <!-- <md-card>
+        <h2><b>Destination:</b> {{originInput.destination}}</h2>
+      </md-card> -->
+      <div class="">
+        <md-input-container layout="column" layout-align="center center" ng-focus="originInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
+          <label for="originInput">Coming from...</label>
+          <input type="text" id="originInput" ng-model="originInput.searchForm.address" name="" value="">
+        </md-input-container>
+      </div>
+    </div>
+    <div layout="column" layout-align="center center">
+      <div layout="row" layout-align="center center">
+        <div flex>
+          <md-content class="time-picker picker">
+              <mdp-time-picker ng-model="originInput.searchForm.date"></mdp-time-picker>
+          </md-content>
+
+        </div>
+        <div flex>
+          <md-content class="date-picker picker" layout="row" layout-align="center center" flex>
+            <md-datepicker ng-model="originInput.searchForm.date"></md-datepicker>
+          </md-content>
+        </div>
+
+      </div>
+    </div>
+
+  <div layout="row" layout-align="center center">
+    <md-button flex="80" class="md-primary md-raised" ng-click="originInput.setOrigin()">
+      <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
+    </md-button>
+  </div>
+    </form>
+</div>
 </div>

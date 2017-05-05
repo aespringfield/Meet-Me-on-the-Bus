@@ -47,7 +47,7 @@ router.post('/getRoute', function(req, res) {
 
   googleMapsAPI.directions(directionsParams, function(err, result) {
     if(err) {
-      console.log('Error:', err);
+      console.log(err);
     }
     console.log(result);
     res.send(result);
