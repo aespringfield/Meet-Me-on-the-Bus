@@ -6,7 +6,7 @@
     <div layout="row" layout-align="center center">
       <div class="">
         <md-input-container layout="column" layout-align="center center" ng-focus="destInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
-          <input type="text" id="destinationInput" ng-change="destInput.checkDestination()" ng-model="destInput.searchForm.address" name="" value="" placeholder="Destination">
+          <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Destination">
         </md-input-container>
       </div>
     </div>
@@ -23,9 +23,11 @@
             <md-datepicker ng-model="destInput.searchForm.date"></md-datepicker>
           </md-content>
         </div>
+
       </div>
     </div>
-    <md-button class="md-primary" ng-click="destInput.setTripInfo()">
+
+    <md-button class="md-primary" ng-click="destInput.setInfoAndAdvance()">
       <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
     </md-button>
   </form>

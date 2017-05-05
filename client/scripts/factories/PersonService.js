@@ -9,6 +9,7 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     mainUser: new MainUser()
   };
 
+
   let findInvitedPerson = function(keyName, keyValue) {
     return userControl.mainUser.currentTrip.groupManager.findPerson(keyName, keyValue);
   };
@@ -99,6 +100,37 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     })
   };
 
+  let goTo = function(file) {
+    $location.path(file);
+  }
+
+  let searchAddress = function(address) {
+    let addressObject = {address: address};
+    return $http.post('/geocode/search', addressObject).then(function(response) {
+      result = response.data.results[0];
+      console.log(result);
+      return result;
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+  let setTripInfo = function(searchForm) {
+    let address = searchForm.address;
+    let date = searchForm.date;
+    let trip = userControl.mainUser.currentTrip;
+    let validInput = searchForm.checkInput(address, date);
+    if (validInput) {
+      searchAddress(address).then(function(result) {
+        console.log('after search');
+        trip.setDestination(result);
+        console.log(trip);
+      });
+      trip.setDesiredEta(date);
+      console.log("in setTripInfo trip is", trip);
+    }
+  }
+
   return {
     code: code,
     userObject: userObject,
@@ -108,6 +140,8 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     getSteps: getSteps,
     getUser: getUser,
     instantiateMainUser: instantiateMainUser,
-    logout: logout
+    logout: logout,
+    goTo: goTo,
+    setTripInfo: setTripInfo
   };
 }]);
