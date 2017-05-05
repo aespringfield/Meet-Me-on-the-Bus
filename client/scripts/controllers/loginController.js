@@ -27,7 +27,7 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
             }
           } else {
             console.log('failure: ', response);
-            $scope.message = "Wrong!!";
+            $scope.message = "Invalid username and/or password";
           }
         });
       }
@@ -53,6 +53,10 @@ myApp.controller('LoginController', ['$scope', '$http', '$location', 'UserServic
           $scope.message = "Please try again.";
         });
       }
+    };
+
+    $scope.goTo = function(file) {
+      $location.path(file);
     };
 
 

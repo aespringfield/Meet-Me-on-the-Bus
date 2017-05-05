@@ -38,14 +38,116 @@
     margin-left: 10px;
 }*/
 
-.container{
-    padding : 20px;
+.logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 60px;
+  text-align: center;
+  color: darkseagreen;
+}
+
+.material-icons {
+  fill: inherit;
+}
+
+.warn-error {
+  font-size: 12px;
+  color: red;
+  fill: red;
+}
+
+.warn-icon {
+  fill: red;
+}
+
+.header-bar {
+  background-color: darkseagreen;
+  height: 100px;
+  color: white;
+  /*opacity: 0.5;*/
+  font-family: 'Varela Round', sans-serif;
+  /*font-family: 'Pacifico', cursive;*/
+  font-size: 20px;
+}
+
+.main-view{
+  padding : 20px;
+  font-size: 20px;
+  min-height: 100%;
+  /*font-family: 'Varela Round', sans-serif;*/
+}
+
+.picker {
+  font-size: 14px;
+  /*min-width: 150px;*/
+}
+
+.location-input{
+  width: 800px;
+}
+
+.full {
+  height:100%
 }
 
 .center {
   margin: 0 auto;
 }
 
+.salmon {
+  background-color: salmon;
+}
+
+.blanchedalmond {
+  background-color: blanchedalmond;
+}
+
+.chartreuse {
+  background-color: chartreuse;
+}
+
+.darkseagreen {
+  background-color: darkseagreen;
+}
+
+.block {
+  display: inline-block;
+}
+
+.picker {
+  height: 75px;
+  width:  140px;
+}
+
+.friend-card:hover {
+  cursor: pointer;
+}
+
+.card {
+  background-color: #FAFAFA;
+  color: darkseagreen;
+  /*font-family: 'Varela Round', sans-serif;*/
+  fill: darkseagreen;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.plus-button {
+  fill: #FFC107;
+}
+
+.button-container {
+  padding: 0;
+  margin: 0;
+  width: 100%
+}
+
+.new-friend {
+  padding: 10px 0 10px 0;
+}
+
+/*.step .card {
+  padding: 10px;
+}*/
 
 /*h1 {
   color: salmon;

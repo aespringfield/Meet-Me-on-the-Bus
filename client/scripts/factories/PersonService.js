@@ -9,6 +9,7 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     mainUser: new MainUser()
   };
 
+
   let findInvitedPerson = function(keyName, keyValue) {
     return userControl.mainUser.currentTrip.groupManager.findPerson(keyName, keyValue);
   };
@@ -99,6 +100,49 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     })
   };
 
+  let goTo = function(file) {
+    $location.path(file);
+  }
+
+  let searchAddress = function(address) {
+    let addressObject = {address: address};
+    return $http.post('/geocode/search', addressObject).then(function(response) {
+      result = response.data.results[0];
+      console.log(result);
+      return result;
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
+
+
+  let setTripInfo = function(searchForm, file) {
+    let address = searchForm.address;
+    let date = searchForm.date;
+    let trip = userControl.mainUser.currentTrip;
+    let validInput = searchForm.checkInput(address, date);
+    let success;
+    if (validInput) {
+      searchForm.clearErrorMessage();
+      trip.setDesiredEta(date);
+      return searchAddress(address).then(function(result) {
+        console.log('after search');
+        console.log('result:', result);
+        if (result) {
+          trip.setDestination(result);
+          goTo(file)
+        } else {
+          searchForm.setErrorMessage('There was an error with your search. Please try again.');
+        }
+        return success;
+      });
+      console.log("in setTripInfo trip is", trip);
+    } else {
+      searchForm.setErrorMessage('There was an error with your search. Please try again.');
+    }
+  }
+
   return {
     code: code,
     userObject: userObject,
@@ -108,6 +152,8 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     getSteps: getSteps,
     getUser: getUser,
     instantiateMainUser: instantiateMainUser,
-    logout: logout
+    logout: logout,
+    goTo: goTo,
+    setTripInfo: setTripInfo
   };
 }]);

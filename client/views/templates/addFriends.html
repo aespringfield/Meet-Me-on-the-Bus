@@ -1,13 +1,32 @@
 <div class="container">
-  <div ng-repeat="friend in friends.peopleArray">
-    <div ng-click="friends.addOriginFor(friend)">
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>Add friends<h1>
+  </div>
+  <div class="main-view">
+    <div layout="row" layout-align="center center" ng-repeat="friend in friends.peopleArray" >
+  <md-card flex="80" class="card">
+    <div ng-click="friends.addOriginFor(friend)" layout="row" layout-align="space-around center"  class="friend-card">
+      <div>
       <i class="material-icons">mode_edit</i>
+    </div>
+    <div>
       <p>{{friend.getShortName()}}</p>
+    </div>
+    <div>
       <i class="material-icons">clear</i>
     </div>
+
   </div>
-  <div>
-    <md-button ng-click="friends.goTo('/newFriend')"><i class="material-icons">add</i></md-button>
+    </md-card>
   </div>
-    <md-button ng-click="friends.goTo('/groupPlan')">Done adding friends</md-button>
+  <div layout="row" layout-align="center center">
+  <md-button flex="80" class="md-raised" ng-click="friends.goTo('/newFriend')">
+    <md-icon class="material-icons md-48 plus-button">add</md-icon>
+  </md-button>
+
+</div>
+<div layout="row" layout-align="center center">
+  <md-button flex="80" class="md-primary md-raised" ng-click="friends.goTo('/groupPlan')">Done adding friends</md-button>
+</div>
+</div>
 </div>
