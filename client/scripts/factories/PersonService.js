@@ -115,19 +115,31 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     });
   };
 
-  let setTripInfo = function(searchForm) {
+
+
+  let setTripInfo = function(searchForm, file) {
     let address = searchForm.address;
     let date = searchForm.date;
     let trip = userControl.mainUser.currentTrip;
     let validInput = searchForm.checkInput(address, date);
+    let success;
     if (validInput) {
-      searchAddress(address).then(function(result) {
-        console.log('after search');
-        trip.setDestination(result);
-        console.log(trip);
-      });
+      searchForm.clearErrorMessage();
       trip.setDesiredEta(date);
+      return searchAddress(address).then(function(result) {
+        console.log('after search');
+        console.log('result:', result);
+        if (result) {
+          trip.setDestination(result);
+          goTo(file)
+        } else {
+          searchForm.setErrorMessage('There was an error with your search. Please try again.');
+        }
+        return success;
+      });
       console.log("in setTripInfo trip is", trip);
+    } else {
+      searchForm.setErrorMessage('There was an error with your search. Please try again.');
     }
   }
 

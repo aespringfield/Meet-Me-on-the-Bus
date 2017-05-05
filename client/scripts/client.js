@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'md.time.picker', 'mdPickers', 'angularMoment']);
 
 // Routes
-myApp.config(['$routeProvider', function($routeProvider) {
+myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $mdThemingProvider) {
   $routeProvider
     .when('/home', {
       templateUrl: '/views/templates/home.html',
@@ -84,4 +84,8 @@ myApp.config(['$routeProvider', function($routeProvider) {
     .otherwise({
       redirectTo: 'home'
     });
+    $mdThemingProvider
+      .theme('default')
+      .primaryPalette('amber')
+      .accentPalette('orange');
 }]);

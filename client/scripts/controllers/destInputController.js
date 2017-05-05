@@ -15,34 +15,15 @@ myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker',
     let date = destInput.searchForm.date;
     let validInput = destInput.searchForm.checkInput(address, date);
     if (validInput) {
+      destInput.searchForm.clearErrorMessage();
       setDestination(address);
       setDesiredEta(date);
     }
   };
 
   destInput.setInfoAndAdvance = function() {
-    setTripInfo(destInput.searchForm);
-    goTo('/originInput');
+    setTripInfo(destInput.searchForm, '/originInput');
   };
-
-  let setDestination = function(address) {
-    let addressObject = {address: address};
-    $http.post('/geocode/search', addressObject).then(function(response) {
-      let result = response.data.results[0];
-      trip.setDestination(result);
-      console.log(trip);
-      $location.path('/originInput');
-    }, function(error) {
-      console.log(error);
-    });
-  };
-
-
-
-  let convertToMoment = function(date) {
-    let newMoment = moment(date).format('llll');
-    return newMoment;
-  }
 
 
   destInput.logout = UserService.logout;

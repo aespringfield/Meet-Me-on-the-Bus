@@ -1,12 +1,24 @@
 <div class="container">
   <div class="header-bar">
   </div>
-  <div class="main-view"
+  <div class="main-view">
+    <div layout="column" layout-align="center center"  ng-if="destInput.searchForm.errorMessage != ''">
+      <md-content class="warn-error" layout="row" layout-align="center center">
+      <div>
+          <i class="warn-icon material-icons">error</i>
+      </div>
+      <div>
+          <p>{{destInput.searchForm.errorMessage}}</p>
+        </div>
+      </div>
+      </md-content>
+    <div>
   <form class="destinationForm">
     <div layout="row" layout-align="center center">
       <div class="">
         <md-input-container layout="column" layout-align="center center" ng-focus="destInput.searchForm.addressError = false" md-is-error="destInput.searchForm.addressError">
-          <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="" placeholder="Destination">
+          <label for="destInput">Destination</label>
+          <input type="text" id="destinationInput" ng-model="destInput.searchForm.address" name="" value="">
         </md-input-container>
       </div>
     </div>
@@ -31,6 +43,6 @@
       <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
     </md-button>
   </form>
-
+</div>
 </div>
 </div>

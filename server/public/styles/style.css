@@ -40,8 +40,9 @@
 
 .logo {
   font-family: 'Pacifico', cursive;
-  font-size: 64px;
+  font-size: 60px;
   text-align: center;
+  color: darkseagreen;
 }
 
 .material-icons {

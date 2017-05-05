@@ -5,7 +5,7 @@ class SearchForm {
     this.date = date;
     this.addressError = false;
     this.dateError = false;
-    this.tempDestination;
+    this.errorMessage = '';
   }
 
   checkInput (address, date) {
@@ -24,16 +24,13 @@ class SearchForm {
     return validInput;
   }
 
-  // temporarily store geocode object from GoogleMaps API before it is saved to currentTrip
-  setTempDestination(destination) {
-    this.tempDestination = destination;
-    return this.tempDestination;
+  setErrorMessage (message) {
+    this.errorMessage = message;
   }
 
-  getTempDestination() {
-    return this.tempDestination;
+  clearErrorMessage () {
+    this.errorMessage = '';
   }
-
 
   // setTripInfo(address, date) {
   //   setDestination(address);
