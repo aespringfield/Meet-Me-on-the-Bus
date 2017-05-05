@@ -2,6 +2,7 @@ myApp.controller('IndivDetailsController', ['UserService', 'PersonService', 'mom
 
   let indivDetails = this;
   let person = PersonService.userControl.mainUser.currentTrip.groupManager.focusPerson;
+  indivDetails.firstName = person.firstName;
   indivDetails.route = person.route;
   indivDetails.steps = PersonService.getSteps(person);
 
