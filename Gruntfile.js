@@ -21,14 +21,6 @@ module.exports = function(grunt){
               '**/*.js'],
         dest: 'server/public/scripts/'
       },
-      bootstrap: {
-        expand: true,
-        cwd: 'node_modules/bootstrap/dist/',
-        src: ['css/bootstrap.min.css',
-              'css/bootstrap.min.css.map',
-              'js/bootstrap.min.js'],
-        dest: 'server/public/vendors/bootstrap/'
-      },
       angular: {
         expand: true,
         cwd: 'node_modules/angular/',
@@ -101,13 +93,6 @@ module.exports = function(grunt){
         src: ['mdPickers.css',
               'mdPickers.js'],
         dest: 'server/public/vendors/mdPickers/'
-      },
-      angularMaterialIcons: {
-        expand: true,
-        cwd: 'node_modules/angular-material-icons',
-        src: ['angular-material-icons.css',
-              'angular-material-icons.js'],
-        dest: 'server/public/vendors/angular-material-icons/'
       }
     },
     watch: {

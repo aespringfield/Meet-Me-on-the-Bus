@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="main-view">
+        <div layout="row" layout-align="center center">
+  <h1 class="logo">Meet Me on the Bus</h1>
+
+    </div>
+    <form>
+      <div layout="column" layout-align="center center">
+        <md-content class="warn-error" layout="row" layout-align="center center" ng-if="message != ''">
+        <div>
+            <i class="warn-icon material-icons">error</i>
+        </div>
+        <div>
+            <p>{{message}}</p>
+          </div>
+        </md-content>
+      <div>
+        <md-input-container >
+          <label for="username">Username</label>
+          <input type="text" ng-model="user.username" />
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container>
+          <label for="password">Password</label>
+          <input type="password" ng-model="user.password" />
+        </md-input-container>
+      </div>
+      <div>
+        <md-button class="md-primary md-raised" ng-click="login()">Log in</md-button>
+        <md-button class="md-raised" ng-click="goTo('/register')">Register</md-button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

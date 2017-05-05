@@ -2,7 +2,6 @@
 node_modules/
 .idea/
 *.log
-server/public/
 server/modules/apiKey.js
 server/modules/mailPass.js
 server/modules/mlabPass.js

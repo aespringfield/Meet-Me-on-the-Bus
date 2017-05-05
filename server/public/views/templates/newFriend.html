@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>New friend<h1>
+  </div>
+  <div class="main-view">
+      <form>
+    <div layout="column" layout-align="center center">
+  <!-- <md-card class="new-friend" flex="80"> -->
+    <md-input-container >
+      <label for="first-name">First name</label>
+      <input ng-model="friends.firstName" id="first-name" type="text">
+    </md-input-container>
+    <md-input-container >
+      <label for="first-name">Last name</label>
+      <input ng-model="friends.lastName" id="last-name" type="text">
+    </md-input-container>
+    <md-input-container layout="row" >
+      <label for="email-address">Email</label>
+      <input ng-model="friends.email" id="email-address" type="text">
+    </md-input-container>
+  <!-- </md-card> -->
+</div>
+    <div class="button-container" layout="column" layout-align="center center">
+    <md-button class="md-primary md-raised button-container" ng-click="friends.save()" flex="80">
+      <md-icon class="material-icons md-48">keyboard_arrow_right</md-icon>
+    </md-button>
+  </div>
+    </form>
+  </div>
+  </div>
+
+</div>
+</div>
