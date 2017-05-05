@@ -16,7 +16,7 @@ var directions = require('./routes/directions');
 var mail = require('./routes/mail');
 var place = require('./routes/place');
 var group = require('./routes/group');
-var mlab = require('./modules/mlabPass');
+var MLAB_PASS = require('./modules/mlabPass');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -54,7 +54,7 @@ var mongoURI = '';
 // are running on Heroku
 if(process.env.MONGODB_URI !== undefined) {
     // use the string value of the environment variable
-    mongoURI = 'mongodb://' + mlab.MLAB_USERNAME + ':' + mlab.MLAB_PASS + '@ds133271.mlab.com:33271/meet_me_on_the_bus';
+    mongoURI = mongoURI = 'mongodb://' + mlab.MLAB_USERNAME + ':' + mlab.MLAB_PASS + '@ds133271.mlab.com:33271/meet_me_on_the_bus';
 } else {
     // use the local database server
     mongoURI = 'mongodb://localhost:27017/passport';
