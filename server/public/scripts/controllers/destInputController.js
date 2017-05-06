@@ -22,7 +22,7 @@ myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker',
   };
 
   destInput.setInfoAndAdvance = function() {
-    console.log(SQUIRREL);
+    console.log(process.env.SQUIRREL);
     setTripInfo(destInput.searchForm, '/originInput');
   };
 
