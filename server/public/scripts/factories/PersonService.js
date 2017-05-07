@@ -1,5 +1,5 @@
 // Controls management of user info and friends
-myApp.factory('PersonService', ['$http', '$location', '$route', function($http, $location, $route){
+myApp.factory('PersonService', ['$http', '$location', '$route', '$q', function($http, $location, $route, $q){
   let code = {};
 
 
@@ -131,38 +131,28 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
         console.log('result:', result);
         if (result) {
           trip.setDestination(result);
-          goTo(file)
+          goTo(file);
         } else {
           searchForm.setErrorMessage('There was an error with your search. Please try again.');
         }
         return success;
       });
-      console.log("in setTripInfo trip is", trip);
+
     } else {
       searchForm.setErrorMessage('There was an error with your search. Please try again.');
     }
-  }
+  };
 
-  let getApiKey = function() {
-    return $http.get('/gecode/key').then(function(response) {
-      return response;
+  keyObject = {};
+
+  let requestKey = function() {
+    return $http.get('/geocode/key').then(function(response) {
+      keyObject.apiKey = response.data.key;
+      return keyObject.apiKey;
     });
   };
 
-  let initMap = function() {
-   map = new google.maps.Map(document.getElementById('map'), {
-     center: {lat: -34.397, lng: 150.644},
-     zoom: 8
-   });
- };
-
-  let getMap = function() {
-    getApiKey().then(function(key) {
-      $http.get('https://maps.googleapis.com/maps/api/js?key=' + key + '&callback=initMap').then(function(response) {
-        console.log(response);
-      });
-    });
-  };
+  requestKey();
 
   return {
     code: code,
@@ -176,6 +166,7 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     logout: logout,
     goTo: goTo,
     setTripInfo: setTripInfo,
-    getMap: getMap
+    getApiKey: getApiKey,
+    keyObject: keyObject
   };
 }]);

@@ -3,7 +3,9 @@
     <h1>Destination<h1>
   </div>
   <div class="main-view">
-    <div id="map"></div>
+    <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{destInput.googleMapsUrl}}">
+    <ng-map center="44.9417,-93.1914" zoom="10"></ng-map>
+    </div>
     <div layout="column" layout-align="center center"  ng-if="destInput.searchForm.errorMessage != ''">
       <md-content class="warn-error" layout="row" layout-align="center center">
       <div>

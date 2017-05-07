@@ -38,6 +38,11 @@
     margin-left: 10px;
 }*/
 
+#origin-map {
+  height: 100px;
+  width: 200px;
+}
+
 #map {
     height:500px;
     width:500px;

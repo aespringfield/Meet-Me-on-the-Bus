@@ -1,12 +1,12 @@
-myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker', 'UserService', 'PersonService', 'moment', function ($http, $location, $mdpTimePicker, UserService, PersonService, moment, $mdpTimePicker) {
+myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker', 'UserService', 'PersonService', 'moment', 'NgMap', function ($http, $location, $mdpTimePicker, UserService, PersonService, moment, NgMap) {
   let destInput = this;
 
   let home = {lat: 44.963376, lng: -93.272385};
 
-  destInput.map = new google.maps.Map(document.getElementById('map'), {
-      center: home,
-      zoom: 15
-    });
+  // destInput.map = new google.maps.Map(document.getElementById('map'), {
+  //     center: home,
+  //     zoom: 15
+  //   });
 
   let trip = PersonService.userControl.mainUser.currentTrip;
 
@@ -32,7 +32,10 @@ myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker',
     setTripInfo(destInput.searchForm, '/originInput');
   };
 
-  destInput.getMap = PersonService.getMap;
+  let apiKey = PersonService.keyObject.apiKey;
+
+  destInput.googleMapsUrl = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&v=3';
+
 
 
   destInput.logout = UserService.logout;

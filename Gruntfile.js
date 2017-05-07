@@ -93,6 +93,12 @@ module.exports = function(grunt){
         src: ['mdPickers.css',
               'mdPickers.js'],
         dest: 'server/public/vendors/mdPickers/'
+      },
+      ngMap: {
+        expand: true,
+        cwd: 'node_modules/ngMap/build/scripts',
+        src: ['ng-map.min.js'],
+        dest: 'server/public/vendors/ngMap/'
       }
     },
     watch: {

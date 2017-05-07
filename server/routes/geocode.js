@@ -41,7 +41,8 @@ router.post('/search', function(req, res) {
 });
 
 router.get('/key', function(req, res) {
-  res.send(GM_API_KEY);
+  var keyObject = {key: API_KEY};
+  res.send(JSON.stringify(keyObject));
 });
 
 module.exports = router;
