@@ -32,6 +32,8 @@ myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker',
     setTripInfo(destInput.searchForm, '/originInput');
   };
 
+  destInput.getMap = PersonService.getMap;
+
 
   destInput.logout = UserService.logout;
 

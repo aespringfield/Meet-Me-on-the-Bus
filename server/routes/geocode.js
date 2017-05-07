@@ -40,4 +40,8 @@ router.post('/search', function(req, res) {
   });
 });
 
+router.get('/key', function(req, res) {
+  res.send(GM_API_KEY);
+});
+
 module.exports = router;
