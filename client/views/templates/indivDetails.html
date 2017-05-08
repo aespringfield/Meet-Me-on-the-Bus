@@ -31,8 +31,7 @@
         </md-content>
 
         <md-content ng-show="step.getMode() === 'WALKING'">
-          <div layout="row" layout-align="start center">
-            <div class="instructions">
+          <div class="instructions" layout="row" layout-align="start center">
             <div>
               <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
             </div>
@@ -40,9 +39,8 @@
               <div><b>{{step.getDuration('text')}}</b></div>
             </div>
           </div>
-          <div>
+          <div class="instructions">
             <div>{{step.getInstructions()}}</div>
-          </div>
           </div>
 
         </md-content>
