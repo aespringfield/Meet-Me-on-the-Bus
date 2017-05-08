@@ -11,8 +11,8 @@
       <div layout="row" layout-align="center center" ng-repeat="step in indivDetails.steps" >
         <md-card flex="90" class="step card">
           <md-content ng-show="step.getMode() === 'TRANSIT'">
-            <div layout="row" layout-align="start center">
               <div flex="90">
+            <div layout="row" layout-align="start center">
               <div>
                 <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
               </div>
@@ -45,10 +45,12 @@
               <div>{{step.getInstructions()}}</div>
             </div>
           </div>
+          </div>
           </md-content>
 
 
         </md-card>
+
       </div>
     <div layout="row" layout-align="center center">
       <h2><b>Arrive at </b>{{indivDetails.route.getArrivalTime('text')}}</h2>
@@ -60,5 +62,5 @@
       <md-button flex="80" class="md-raised md-primary" ng-click="indivDetails.goToMap()">Map</md-button>
     </div>
 
-    </div>
+
   </div>
