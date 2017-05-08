@@ -6,7 +6,7 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
   groupPlan.trip = trip;
   groupPlan.group = groupManager.peopleArray;
   groupPlan.eta = moment(trip.eta).format('h:mm a');
-  groupPlan.enteredDestination = trip.getEnteredDestName;
+  groupPlan.enteredDestination = trip.getEnteredDestName();
 
 
   // make this send mail to all friends who are not main user
