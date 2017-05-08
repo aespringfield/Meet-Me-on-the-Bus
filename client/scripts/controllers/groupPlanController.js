@@ -22,6 +22,10 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
     $location.path('/indivDetails');
   };
 
+  groupPlan.viewGroupMap = function() {
+    $location.path('/groupMap');
+  }
+
   let getInstructionsString = function(steps) {
     let instructionsString = ''
     for (let i = 0; i < steps.length; i++) {

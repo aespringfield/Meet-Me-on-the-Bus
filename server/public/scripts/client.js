@@ -71,6 +71,16 @@ myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $
         }]
       }
     })
+    .when('/groupMap', {
+      templateUrl: '/views/templates/groupMap.html',
+      controller: 'GroupMapController',
+      controllerAs: 'groupMap',
+      resolve: {
+        getUser : ['PersonService', function(PersonService){
+          return PersonService.getUser();
+        }]
+      }
+    })
     // Accept a route with an activation code as a parameter
     .when('/activate/:code', {
       templateUrl: '/views/templates/activate.html',

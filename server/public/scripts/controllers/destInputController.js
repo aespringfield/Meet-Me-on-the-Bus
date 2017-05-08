@@ -1,13 +1,6 @@
 myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker', 'UserService', 'PersonService', 'moment', function ($http, $location, $mdpTimePicker, UserService, PersonService, moment, $mdpTimePicker) {
   let destInput = this;
 
-  let home = {lat: 44.963376, lng: -93.272385};
-
-  destInput.map = new google.maps.Map(document.getElementById('map'), {
-      center: home,
-      zoom: 15
-    });
-
   let trip = PersonService.userControl.mainUser.currentTrip;
 
   console.log('in dest. trip is', trip);
