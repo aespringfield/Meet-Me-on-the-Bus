@@ -5,6 +5,8 @@ class Trip {
     this.desiredEta = desiredEta;
     this.eta = eta;
     this.groupManager = new GroupManager();
+    this.enteredDestName = undefined;
+
   }
 
   // setDestination(address) {
@@ -107,5 +109,14 @@ class Trip {
     setDesiredEta(date);
   }
 
+  setEnteredDestName(name) {
+    name = name.toUpperCase();
+    this.enteredDestName = name;
+    return this.enteredDestName;
+  }
+
+  getEnteredDestName() {
+    return this.enteredDestName;
+  }
 
 }

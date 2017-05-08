@@ -105,8 +105,23 @@ class GroupManager extends PeopleManager {
       }
     }
     return {
-      respondeeArray,
-      nonRespondeeArray
+      respondeeArray: respondeeArray,
+      nonRespondeeArray: nonRespondeeArray
+    };
+  }
+
+  pickColors() {
+    let respondeeObject = this.getByResponded();
+    console.log(respondeeObject);
+    let respondees = respondeeObject.respondeeArray;
+    for (let i = 0; i < respondees.length; i++) {
+      let respondee = respondees[i];
+      let numColors = RESPONDEE_COLORS.length;
+      if (i < numColors) {
+        respondee.color = RESPONDEE_COLORS[i];
+      } else {
+        respondee.color = RESPONDEE_COLORS[i - numColors];
+      }
     }
   }
 }

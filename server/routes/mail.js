@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var nodemailer = require('nodemailer');
-// var MAIL_PASS = require('../modules/mailPass');
+var MAIL_PASS = require('../modules/mailPass');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
@@ -35,8 +35,8 @@ router.post('/', function(req, res) {
     from: '"Meet Me Mailer", meetmemailer@gmail.com',
     to: mailer.toEmail, // list of receivers
     subject: mailer.subject, // subject line
-    text: mailer.message, // plain text body
-    html: '<b>' + mailer.message + '</b>' // html body
+    text: mailer.message.string, // plain text body
+    html: mailer.message.html // html body
   };
 
   transporter.sendMail(mailOptions, function(error, info) {

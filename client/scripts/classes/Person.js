@@ -99,6 +99,7 @@ class InvitedPerson extends Person {
 
     // sets route from data on object sent from Google Maps API Directions Service
     setRoute(directionsObject) {
+
       this.route = new Route(directionsObject);
       this.setResponded(true);
       console.log(this);

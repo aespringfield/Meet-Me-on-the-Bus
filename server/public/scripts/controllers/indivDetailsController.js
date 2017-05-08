@@ -1,4 +1,4 @@
-myApp.controller('IndivDetailsController', ['UserService', 'PersonService', 'moment', function (UserService, PersonService, moment) {
+myApp.controller('IndivDetailsController', ['$location', 'UserService', 'PersonService', 'moment', function ($location, UserService, PersonService, moment) {
 
   let indivDetails = this;
   let person = PersonService.userControl.mainUser.currentTrip.groupManager.focusPerson;
@@ -32,6 +32,12 @@ myApp.controller('IndivDetailsController', ['UserService', 'PersonService', 'mom
     return icon;
   };
 
+indivDetails.goToMap = function() {
+  $location.path('/indivMap');
+};
 
+indivDetails.goToGroupPlan = function() {
+  $location.path('/groupPlan');
+};
 
 }]);

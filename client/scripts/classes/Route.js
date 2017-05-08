@@ -8,6 +8,7 @@ class Route {
     this.arrival_time = directionsObject.routes[0].legs[0].arrival_time;
     this.departure_time = directionsObject.routes[0].legs[0].departure_time;
     this.duration = directionsObject.routes[0].legs[0].duration;
+    this.bounds = directionsObject.routes[0].bounds;
     this.steps = [];
 
     let stepsArray = directionsObject.routes[0].legs[0].steps;
