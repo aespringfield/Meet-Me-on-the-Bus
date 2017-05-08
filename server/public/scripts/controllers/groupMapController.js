@@ -1,9 +1,13 @@
-myApp.controller('GroupMapController', ['PersonService', function (PersonService) {
+myApp.controller('GroupMapController', ['$location', 'PersonService', function ($location, PersonService) {
   let groupMap = this;
 
   let groupManager = PersonService.userControl.mainUser.currentTrip.groupManager;
 
   groupMap.respondees = groupManager.getByResponded().respondeeArray;
+
+  groupMap.goToDetails = function() {
+    $location.path('/groupPlan')
+  }
 
   let home = {lat: 44.963376, lng: -93.272385};
 
@@ -18,17 +22,7 @@ myApp.controller('GroupMapController', ['PersonService', function (PersonService
       fullscreenControl: false
     });
 
-  let pickColors = function(respondees) {
-    for (let i = 0; i < respondees.length; i++) {
-      let respondee = respondees[i];
-      let numColors = RESPONDEE_COLORS.length;
-      if (i < numColors) {
-        respondee.color = RESPONDEE_COLORS[i];
-      } else {
-        respondee.color = RESPONDEE_COLORS[i - numColors];
-      }
-    }
-  };
+
 
   let findBounds = function(respondees) {
     let northeastLat;
@@ -62,7 +56,6 @@ myApp.controller('GroupMapController', ['PersonService', function (PersonService
   }
 
   groupMap.fillMap = function(respondees) {
-    pickColors(respondees);
     drawPolylines(respondees);
     let bounds = findBounds(respondees);
     shiftMapBounds(bounds);

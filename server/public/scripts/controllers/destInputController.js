@@ -16,6 +16,7 @@ myApp.controller('DestInputController', ['$http', '$location', '$mdpTimePicker',
     let validInput = destInput.searchForm.checkInput(address, date);
     if (validInput) {
       destInput.searchForm.clearErrorMessage();
+      setEnteredDestName(address);
       setDestination(address);
       setDesiredEta(date);
     }

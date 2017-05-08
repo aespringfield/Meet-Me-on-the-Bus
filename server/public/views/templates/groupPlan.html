@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" ng-init="groupPlan.trip.groupManager.pickColors()">
   <div class="header-bar" layout="row" layout-align="center center">
     <h1>Group plan<h1>
   </div>
   <div class="main-view">
   <div>
-    <p>Your group will arrive at {{groupPlan.destination}} at <b>{{groupPlan.eta}}</b></p>
+    <p>Your group will arrive at {{groupPlan.enteredDestination}} at <b>{{groupPlan.eta}}</b></p>
   </div>
   <div layout="row" layout-align="center center">
     <md-button flex="80" class="md-accent md-raised" ng-click="groupPlan.viewGroupMap()">Map</md-button>

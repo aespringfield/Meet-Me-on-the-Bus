@@ -1,51 +1,49 @@
-/*.instructions .container h1 {
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.instructions {
-    background-color: #333333;
-    color: #DDDDDD;
-}
-
-#entryForm {
-    margin-top: 14px;
-}
-
-#container {
-    margin-top: 10px;
-}
-
-
-
-.message {
-    padding: 10px 0;
-}
-
-.message p {
-    margin-left: 10px;
-}
-
-.message:nth-child(odd) {
-     background-color: #eeeeee;
-}
-
-.message:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
-.btn-danger{
-    margin-left: 10px;
-}*/
-
 #map {
     /*height: 500px;
     width: 400px;
     box-shadow: 3px 3px 10px gray;*/
-    display: inline;
     height: 100%;
+    width: 100%;
     z-index: 1;
-    }
+}
+
+#indiv-map {
+    /*height: 500px;
+    width: 400px;
+    box-shadow: 3px 3px 10px gray;*/
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.map-container {
+  /*overflow: hidden;*/
+  height: 66vh;
+  width: 100vw;
+}
+
+.map-btn-container {
+  height: 16.5vh;
+  width: 100vw;
+  /*padding: 0 20px 20px 0;*/
+}
+
+.header-bar {
+  background-color: darkseagreen;
+  height: 16.5vh;
+  width: 100vw;
+  color: white;
+  font-family: 'Varela Round', sans-serif;
+  /*font-family: 'Pacifico', cursive;*/
+  font-size: 18px;
+  opacity: 1;
+  z-index: 500;
+}
+
+/*.fixed-btn-container {
+  position: fixed;
+  bottom: 0;
+}*/
 
 .container {
   min-height: 100%;
@@ -72,21 +70,10 @@
   fill: red;
 }
 
-.header-bar {
-  background-color: darkseagreen;
-  height: 100px;
-  color: white;
-  /*opacity: 0.5;*/
-  font-family: 'Varela Round', sans-serif;
-  /*font-family: 'Pacifico', cursive;*/
-  font-size: 20px;
-  opacity: 0.75;
-  z-index: 500;
-}
-
 .main-view{
   padding : 20px;
   font-size: 20px;
+  top: 0px;
   /*font-family: 'Varela Round', sans-serif;*/
 }
 
@@ -105,18 +92,6 @@
 
 .center {
   margin: 0 auto;
-}
-
-.salmon {
-  background-color: salmon;
-}
-
-.blanchedalmond {
-  background-color: blanchedalmond;
-}
-
-.chartreuse {
-  background-color: chartreuse;
 }
 
 .darkseagreen {

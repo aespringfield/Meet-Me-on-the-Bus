@@ -2,8 +2,12 @@
   <div class="header-bar" layout="row" layout-align="center center">
     <h1>Group plan<h1>
   </div>
-  <div layout="row" layout-align="center center">
-    <div id="map" layout-fill></div>
-  <div class="main-view">
-</div>
+  <div class="map-container">
+    <div id="map"></div>
+  </div>
+  <!-- <div class="main-view"> -->
+  <div class="map-btn-container" layout="row" layout-align="center center">
+    <md-button flex="80" class="md-raised md-primary" ng-click="groupMap.goToDetails()">Details</md-button>
+  </div>
+    <!-- </div> -->
 </div>

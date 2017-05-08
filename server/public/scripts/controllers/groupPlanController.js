@@ -3,9 +3,11 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
   let mainUser = PersonService.userControl.mainUser;
   let trip = mainUser.currentTrip;
   let groupManager = trip.groupManager;
+  groupPlan.trip = trip;
   groupPlan.group = groupManager.peopleArray;
   groupPlan.eta = moment(trip.eta).format('h:mm a');
-  groupPlan.destination = trip.destination.formatted_address;
+  groupPlan.enteredDestination = trip.getEnteredDestName;
+
 
   // make this send mail to all friends who are not main user
   // then figure out how to make it send that user's route info
@@ -13,7 +15,7 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
   groupPlan.sendToFriends = function() {
     let subUsers = groupManager.getSubUsers();
     for (let i = 0; i < subUsers.length; i++) {
-      sendMail(subUsers[i]);
+      sendMail(subUsers[i], groupPlan.trip);
     }
   };
 
@@ -26,33 +28,70 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
     $location.path('/groupMap');
   }
 
-  let getInstructionsString = function(steps) {
+  let getInstructionsString = function(person) {
+    let steps = person.route.steps;
     let instructionsString = ''
     for (let i = 0; i < steps.length; i++) {
       let step = steps[i];
       if (i > 0) {
-        instructionsString += '\n\n';
+        instructionsString += ' \ \ ';
       }
       if (step.getMode() === 'TRANSIT') {
-        instructionsString += 'Take the ' + step.getRouteName() + '\n';
-        instructionsString += 'Depart at: ' + step.getDepartureTime() + '\n';
-        instructionsString += 'Leave from: ' + step.getDepartureStop() + '\n';
+        instructionsString += 'Take the ' + step.getRouteName() + ' \ ';
+        instructionsString += 'Depart at: ' + step.getDepartureTime() + ' \ ';
+        instructionsString += 'Leave from: ' + step.getDepartureStop() + ' \ ';
         instructionsString += '\n';
-        instructionsString += 'Arrive at: ' + step.getArrivalTime() + '\n';
+        instructionsString += 'Arrive at: ' + step.getArrivalTime() + ' \ ';
         instructionsString += 'Get off at: ' + step.getArrivalStop();
       } else if (step.getMode() === 'WALKING') {
         instructionsString += step.getInstructions() + ' (' + step.getDuration('text') + ')';
       }
       return instructionsString;
     }
-  }
+  };
 
-  let sendMail = function(friend) {
-    let routeInstructions = getInstructionsString(friend.route.steps);
+  let getInstructionsHtml = function(person, trip) {
+    let steps = person.route.steps;
+    let instructionsHtml = '';
+    instructionsHtml += '<p>Your whole group will arrive at ' + trip.getEnteredDestName() + ' by <b>' + groupPlan.eta + '</b>.</p><br>';
+    instructionsHtml += '<p>You should leave at <b>' + person.route.getDepartureTime('text') + '</b>.</p><br>'
+    for (let i = 0; i < steps.length; i++) {
+      let step = steps[i];
+      if (i > 0) {
+        instructionsHtml += '<br>';
+      }
+      if (step.getMode() === 'TRANSIT') {
+        instructionsHtml += '<p><b>' + step.getRouteName() + '</b></p>';
+        instructionsHtml += '<p>Depart:</p>';
+        instructionsHtml += '<p><b>' + step.getDepartureTime() + '</b> - ' + step.getDepartureStop() + '</p>';
+        instructionsHtml += '<p>Arrive:</p>';
+        instructionsHtml += '<p><b>' + step.getArrivalTime() + '</b> - ' + step.getArrivalStop() + '</p>';
+      } else if (step.getMode() === 'WALKING') {
+        instructionsHtml += '<p>' + step.getInstructions() + ' - ' + step.getDuration('text') + '</p>';
+      }
+    }
+    instructionsHtml += '<br><p><b>You will arrive at ' + person.route.getDepartureTime('text') + '</p>';
+    return instructionsHtml;
+};
+
+  // let getPlace = function(place_id) {
+  //   $http.get('/place/' + place_id).then(function(response) {
+  //     console.log(response.data);
+  //     // trip.placeName =
+  //   })
+  // }
+
+  let sendMail = function(friend, trip) {
+    let instructionsString = getInstructionsString(friend);
+    let instructionsHtml = getInstructionsHtml(friend, trip);
+
     let mailer = {
       toEmail: [friend.email],
-      subject: 'Route from ' + mainUser.firstName,
-      message: routeInstructions,
+      subject: mainUser.firstName + ' sent you a route to ' + trip.getEnteredDestName(),
+      message: {
+        string: instructionsString,
+        html: instructionsHtml
+      },
     };
     console.log("mailer is", mailer);
     $http.post('/mail', mailer).then(function(response) {

@@ -1,0 +1,12 @@
+<div class="container" ng-init="indivMap.fillMap(indivMap.person)">
+  <div class="header-bar" layout="row" layout-align="center center">
+    <h1>{{indivMap.person.firstName}}'s route<h1>
+  </div>
+  <div class="map-container">
+    <div id="indiv-map"></div>
+  <!-- <div class="main-view"> -->
+    <div class="map-btn-container" layout="row" layout-align="center center">
+      <md-button flex="80" class="md-raised md-primary" ng-click="indivMap.goToDetails()">Details</md-button>
+    </div>
+  <!-- </div> -->
+</div>

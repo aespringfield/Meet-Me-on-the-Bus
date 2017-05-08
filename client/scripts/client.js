@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'mdPickers', 'angularMoment']);
+let myApp = angular.module('myApp', ['ngRoute', 'ngAnimate', 'ngAria', 'ngMaterial', 'ngMessages', 'mdPickers', 'angularMoment']);
 
 // Routes
 myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $mdThemingProvider) {
@@ -75,6 +75,16 @@ myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $
       templateUrl: '/views/templates/groupMap.html',
       controller: 'GroupMapController',
       controllerAs: 'groupMap',
+      resolve: {
+        getUser : ['PersonService', function(PersonService){
+          return PersonService.getUser();
+        }]
+      }
+    })
+    .when('/indivMap', {
+      templateUrl: '/views/templates/indivMap.html',
+      controller: 'IndivMapController',
+      controllerAs: 'indivMap',
       resolve: {
         getUser : ['PersonService', function(PersonService){
           return PersonService.getUser();
