@@ -125,6 +125,7 @@ myApp.factory('PersonService', ['$http', '$location', '$route', function($http, 
     let success;
     if (validInput) {
       searchForm.clearErrorMessage();
+      trip.setEnteredDestName(address);
       trip.setDesiredEta(date);
       return searchAddress(address).then(function(result) {
         console.log('after search');
