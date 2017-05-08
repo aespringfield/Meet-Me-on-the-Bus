@@ -67,6 +67,10 @@ class TransitStep extends Step {
     if (this.vehicle === 'Light rail') {
       routeName = routeName + ' Line';
     }
+    if (!routeName) {
+      let headsignEls = this.headsign.split('/');
+      routeName = headsignEls[0];
+    }
     return routeName;
   }
 
