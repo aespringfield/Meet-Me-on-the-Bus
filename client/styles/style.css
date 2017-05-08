@@ -33,7 +33,8 @@
   height: 16.5vh;
   width: 100vw;
   color: white;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  /*font-family: 'Varela Round', sans-serif;*/
   /*font-family: 'Pacifico', cursive;*/
   font-size: 18px;
   opacity: 1;
@@ -44,6 +45,10 @@
   position: fixed;
   bottom: 0;
 }*/
+
+.signpost {
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
 .container {
   min-height: 100%;

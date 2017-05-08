@@ -4,7 +4,7 @@
   </div>
   <div class="main-view">
     <div layout="row" layout-align="center center">
-      <h2><b>Leave at </b>{{indivDetails.route.getDepartureTime('text')}}</h2>
+      <h2 class="signpost"><b>Leave at </b>{{indivDetails.route.getDepartureTime('text')}}</h2>
     </div>
 
     <md-card class="step card"  ng-repeat="step in indivDetails.steps">
@@ -27,7 +27,6 @@
             <div><b>{{step.getArrivalTime()}}</b></div>
             <div><b>Arrive at </b>{{step.getArrivalStop()}}</div>
           </div>
-
         </md-content>
 
         <md-content ng-show="step.getMode() === 'WALKING'">
@@ -49,7 +48,7 @@
     </md-card>
 
     <div layout="row" layout-align="center center">
-      <h2><b>Arrive at </b>{{indivDetails.route.getArrivalTime('text')}}</h2>
+      <h2 class="signpost"><b>Arrive at </b>{{indivDetails.route.getArrivalTime('text')}}</h2>
     </div>
     <div class="fixed-btn-container" layout="row" layout-align="center center">
       <md-button flex="80" class="md-raised" ng-click="indivDetails.goToGroupPlan()">Group plan</md-button>
