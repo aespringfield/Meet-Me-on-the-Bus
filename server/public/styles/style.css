@@ -77,6 +77,10 @@
   /*font-family: 'Varela Round', sans-serif;*/
 }
 
+.group-summary {
+  text-align: center;
+}
+
 .picker {
   font-size: 14px;
   /*min-width: 150px;*/

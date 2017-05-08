@@ -3,10 +3,10 @@
     <h1>Group plan<h1>
   </div>
   <div class="main-view">
-  <div>
-    <p>Your group will arrive at {{groupPlan.enteredDestination}} at <b>{{groupPlan.eta}}</b></p>
-  </div>
-  <div layout="row" layout-align="center center">
+    <div layout="row" layout-align="center center">
+    <div class="group-summary" flex>
+      <p>Your group will arrive at {{groupPlan.enteredDestination}} at <b>{{groupPlan.eta}}</b></p>
+    </div>
     <md-button flex="80" class="md-accent md-raised" ng-click="groupPlan.viewGroupMap()">Map</md-button>
   </div>
   <div ng-repeat="groupMember in groupPlan.group">

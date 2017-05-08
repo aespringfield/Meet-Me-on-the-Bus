@@ -40,7 +40,7 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
         instructionsString += 'Take the ' + step.getRouteName() + ' \ ';
         instructionsString += 'Depart at: ' + step.getDepartureTime() + ' \ ';
         instructionsString += 'Leave from: ' + step.getDepartureStop() + ' \ ';
-        instructionsString += '\n';
+        instructionsString += ' \ ';
         instructionsString += 'Arrive at: ' + step.getArrivalTime() + ' \ ';
         instructionsString += 'Get off at: ' + step.getArrivalStop();
       } else if (step.getMode() === 'WALKING') {
@@ -67,19 +67,12 @@ myApp.controller('GroupPlanController', ['$http', '$location', 'PersonService', 
         instructionsHtml += '<p>Arrive:</p>';
         instructionsHtml += '<p><b>' + step.getArrivalTime() + '</b> - ' + step.getArrivalStop() + '</p>';
       } else if (step.getMode() === 'WALKING') {
-        instructionsHtml += '<p>' + step.getInstructions() + ' - ' + step.getDuration('text') + '</p>';
+        instructionsHtml += '<p>' + step.getInstructions() + ' - <b>' + step.getDuration('text') + '</b></p>';
       }
     }
-    instructionsHtml += '<br><p><b>You will arrive at ' + person.route.getDepartureTime('text') + '</p>';
+    instructionsHtml += '<br><p><b>You will arrive at ' + person.route.getArrivalTime('text') + '</p>';
     return instructionsHtml;
 };
-
-  // let getPlace = function(place_id) {
-  //   $http.get('/place/' + place_id).then(function(response) {
-  //     console.log(response.data);
-  //     // trip.placeName =
-  //   })
-  // }
 
   let sendMail = function(friend, trip) {
     let instructionsString = getInstructionsString(friend);
