@@ -12,13 +12,13 @@
         <md-card flex="90" class="step card">
           <md-content ng-show="step.getMode() === 'TRANSIT'">
             <div layout="row" layout-align="start center">
+              <div flex="90">
               <div>
                 <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
               </div>
               <div>
                 <div><b>{{step.getRouteName()}}</b></div>
               </div>
-            </div>
             <div>
               <div><b>{{step.getDepartureTime()}}</b></div>
               <div><b>Leave from </b>{{step.getDepartureStop()}}</div>
@@ -27,11 +27,13 @@
               <div><b>{{step.getArrivalTime()}}</b></div>
               <div><b>Arrive at </b>{{step.getArrivalStop()}}</div>
             </div>
+          </div>
 
           </md-content>
 
           <md-content ng-show="step.getMode() === 'WALKING'">
             <div layout="row" layout-align="start center">
+              <div flex="90">
               <div>
                 <i class="material-icons">{{indivDetails.chooseIcon(step)}}</i>
               </div>
@@ -42,7 +44,7 @@
             <div>
               <div>{{step.getInstructions()}}</div>
             </div>
-
+          </div>
           </md-content>
 
 
