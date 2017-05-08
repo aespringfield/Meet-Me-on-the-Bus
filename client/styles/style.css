@@ -81,6 +81,10 @@
   text-align: center;
 }
 
+.instructions {
+  padding: 10px 0 10px 0;
+}
+
 .picker {
   font-size: 14px;
   /*min-width: 150px;*/
