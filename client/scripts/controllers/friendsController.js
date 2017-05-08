@@ -13,7 +13,8 @@ myApp.controller('FriendsController', ['$http', '$location', 'UserService', 'Per
   friends.save = function() {
     let friend = new Person(this.firstName, this.lastName, this.email);
     friendsManager.add(friend);
-    friends.goTo('/addFriends');
+    // friends.goTo('/addFriends');
+    friends.addOriginFor(friend);
   };
 
   friends.addOriginFor = function(friend) {
