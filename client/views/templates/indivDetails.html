@@ -7,9 +7,9 @@
       <h2><b>Leave at </b>{{indivDetails.route.getDepartureTime('text')}}</h2>
     </div>
 
-    <md-card class="step card"  ng-repeat="step in indivDetails.steps" >
-      <div layout="row" layout-align="center center"flex="90" >
-
+    <md-card class="step card"  ng-repeat="step in indivDetails.steps">
+      <div layout="row" layout-align="center center">
+        <div flex="90">
         <md-content ng-show="step.getMode() === 'TRANSIT'">
           <div layout="row" layout-align="start center">
             <div>
@@ -44,7 +44,7 @@
           </div>
 
         </md-content>
-
+      </div>
       </div>
     </md-card>
 
