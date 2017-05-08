@@ -12,6 +12,18 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
 
   originInput.destination = street_address + ', ' + city;
 
+  let setHeader = function() {
+    let header;
+    if (person.mainUser === true) {
+      header = 'Your origin';
+    } else if (person.mainUser === false) {
+      header = person.firstName + '\'s origin';
+    }
+    return header;
+  };
+
+  originInput.header = setHeader();
+
   console.log("person is", person);
 
   function goToFriends() {
