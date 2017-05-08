@@ -17,7 +17,7 @@ myApp.controller('OriginInputController', ['$http', '$location', 'UserService', 
     if (person.mainUser === true) {
       header = 'Your origin';
     } else if (person.mainUser === false) {
-      header = person.firstName;
+      header = person.firstName + '\'s origin';
     }
     return header;
   };
