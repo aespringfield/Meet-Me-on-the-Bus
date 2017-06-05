@@ -22,8 +22,6 @@ myApp.controller('GroupMapController', ['$location', 'PersonService', function (
       fullscreenControl: false
     });
 
-
-
   let findBounds = function(respondees) {
     let northeastLat;
     let northeastLng;
@@ -83,7 +81,4 @@ myApp.controller('GroupMapController', ['$location', 'PersonService', function (
     latLngBounds.extend(sw);
     map.fitBounds(latLngBounds);
   };
-
-
-
 }]);
